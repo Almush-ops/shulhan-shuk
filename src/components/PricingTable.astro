@@ -1,0 +1,80 @@
+---
+interface PricingRow {
+  type: string;
+  minGuests?: string;
+  priceRange: string;
+  includes: string;
+  popular?: boolean;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  rows?: PricingRow[];
+}
+
+const { title = 'מחירון שולחן שוק', subtitle = 'מחירים כוללים הכנה, הגעה, סידור והגשה', rows = [
+  { type: 'שולחן שוק בשרי', minGuests: '15 איש', priceRange: '₪60-90 לאורח', includes: 'בשרים, סלטים, תוספות, לחמים', popular: true },
+  { type: 'שולחן שוק חלבי', minGuests: '15 איש', priceRange: '₪50-80 לאורח', includes: 'גבינות, מאפים, סלטים, פירות' },
+  { type: 'שולחן שוק המבורגר', minGuests: '20 איש', priceRange: '₪55-85 לאורח', includes: 'המבורגר, תוספות, רטבים, לחמניות' },
+  { type: 'שולחן שוק שניצל', minGuests: '20 איש', priceRange: '₪50-75 לאורח', includes: 'שניצלים, סלטים, תוספות, רטבים' },
+  { type: 'שולחן שוק קינוחים', minGuests: '15 איש', priceRange: '₪45-70 לאורח', includes: 'עוגות, מאפים, פירות, שוקולד' },
+  { type: 'שולחן שוק מטוגנים', minGuests: '20 איש', priceRange: '₪50-80 לאורח', includes: 'פלאפל, צ\'יפס, חביתיות, קציצות' },
+] } = Astro.props;
+---
+
+<section class="py-16 md:py-20">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl md:text-3xl font-heading text-dark mb-3">{title}</h2>
+      {subtitle && <p class="text-muted">{subtitle}</p>}
+    </div>
+
+    <!-- Desktop table -->
+    <div class="hidden md:block overflow-x-auto">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="bg-brand-600 text-white">
+            <th class="px-6 py-4 text-start font-semibold rounded-tr-xl">סוג שולחן</th>
+            <th class="px-6 py-4 text-start font-semibold">מינימום</th>
+            <th class="px-6 py-4 text-start font-semibold">טווח מחירים</th>
+            <th class="px-6 py-4 text-start font-semibold rounded-tl-xl">כולל</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr class={`border-b border-border/50 ${row.popular ? 'bg-brand-50' : i % 2 === 0 ? 'bg-white' : 'bg-surface/50'} hover:bg-brand-50/50 transition-colors`}>
+              <td class="px-6 py-4 font-semibold text-dark">
+                {row.type}
+                {row.popular && <span class="ms-2 text-xs bg-brand-600 text-white px-2 py-0.5 rounded-full">פופולרי</span>}
+              </td>
+              <td class="px-6 py-4 text-muted">{row.minGuests}</td>
+              <td class="px-6 py-4 font-bold text-brand-700" dir="ltr">{row.priceRange}</td>
+              <td class="px-6 py-4 text-muted text-sm">{row.includes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mobile cards -->
+    <div class="md:hidden space-y-4">
+      {rows.map((row) => (
+        <div class={`rounded-2xl border p-5 ${row.popular ? 'border-brand-300 bg-brand-50 shadow-md' : 'border-border/50 bg-white shadow-sm'}`}>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-bold text-dark">{row.type}</h3>
+            {row.popular && <span class="text-xs bg-brand-600 text-white px-2 py-0.5 rounded-full">פופולרי</span>}
+          </div>
+          <p class="text-2xl font-bold text-brand-700 mb-2" dir="ltr">{row.priceRange}</p>
+          {row.minGuests && <p class="text-sm text-muted mb-2">מינימום: {row.minGuests}</p>}
+          <p class="text-sm text-muted">{row.includes}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-sm text-muted mt-8">
+      * המחירים הם הערכה כללית ועשויים להשתנות בהתאם לתפריט, כמות אורחים ומיקום.
+      <a href="/mehirim/" class="text-brand-600 hover:text-brand-700 underline">למחירון המלא</a>
+    </p>
+  </div>
+</section>

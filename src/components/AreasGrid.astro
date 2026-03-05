@@ -1,0 +1,48 @@
+---
+interface Area {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  title?: string;
+  areas?: Area[];
+}
+
+const { title = 'אזורי שירות', areas = [
+  { name: 'תל אביב', href: '/tel-aviv/' },
+  { name: 'חיפה', href: '/haifa/' },
+  { name: 'ירושלים', href: '/yerushalayim/' },
+  { name: 'באר שבע', href: '/beer-sheva/' },
+  { name: 'ראשון לציון', href: '/rishon-lezion/' },
+  { name: 'נתניה', href: '/netanya/' },
+  { name: 'פתח תקווה', href: '/petah-tikva/' },
+  { name: 'כפר סבא', href: '/kfar-saba/' },
+  { name: 'רעננה', href: '/raanana/' },
+  { name: 'הרצליה', href: '/herzliya/' },
+  { name: 'רחובות', href: '/rehovot/' },
+  { name: 'אשדוד', href: '/ashdod/' },
+  { name: 'אשקלון', href: '/ashkelon/' },
+  { name: 'הצפון', href: '/tzafon/' },
+] } = Astro.props;
+---
+
+<section class="py-12 md:py-16">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-heading text-dark mb-8 text-center">{title}</h2>
+    <div class="flex flex-wrap justify-center gap-3">
+      {areas.map((area) => (
+        <a
+          href={area.href}
+          class="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-border rounded-full text-sm font-medium text-dark hover:bg-brand-50 hover:border-brand-300 hover:text-brand-700 transition-all shadow-sm hover:shadow-md"
+        >
+          <svg class="w-4 h-4 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          שולחן שוק {area.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

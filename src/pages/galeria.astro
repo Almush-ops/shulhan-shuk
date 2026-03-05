@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import CTASection from '../components/CTASection.astro';
+
+const galleryImages = [
+  { src: '/images/gallery/placeholder-1.jpg', alt: 'שולחן שוק בשרי מרשים לאירוע' },
+  { src: '/images/gallery/placeholder-2.jpg', alt: 'שולחן שוק חלבי עם גבינות ומאפים' },
+  { src: '/images/gallery/placeholder-3.jpg', alt: 'שולחן שוק המבורגר עם תוספות' },
+  { src: '/images/gallery/placeholder-4.jpg', alt: 'שולחן שוק קינוחים צבעוני' },
+  { src: '/images/gallery/placeholder-5.jpg', alt: 'שולחן שוק ליום הולדת' },
+  { src: '/images/gallery/placeholder-6.jpg', alt: 'עיצוב שולחן שוק פרימיום' },
+  { src: '/images/gallery/placeholder-7.jpg', alt: 'סלטים טריים על שולחן שוק' },
+  { src: '/images/gallery/placeholder-8.jpg', alt: 'שולחן שוק לבר מצווה' },
+  { src: '/images/gallery/placeholder-9.jpg', alt: 'שולחן שוק בשרי מלא' },
+  { src: '/images/gallery/placeholder-10.jpg', alt: 'שולחן שוק חלבי לשבת' },
+  { src: '/images/gallery/placeholder-11.jpg', alt: 'שולחן שוק למסיבת רווקות' },
+  { src: '/images/gallery/placeholder-12.jpg', alt: 'שולחן שוק לאירוע חברה' },
+];
+---
+
+<BaseLayout
+  title="גלריה — תמונות שולחנות שוק מאירועים"
+  description="גלריית תמונות מאירועים אמיתיים — שולחנות שוק בשרי, חלבי, המבורגר, קינוחים ועוד. ראו את השולחנות שלנו."
+>
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <Breadcrumbs items={[{ label: 'גלריה' }]} />
+      <h1 class="text-3xl md:text-4xl font-heading text-dark mb-3 text-center">גלריה</h1>
+      <p class="text-muted text-center mb-8 max-w-2xl mx-auto">תמונות מאירועים אמיתיים — כל שולחן שוק שאנחנו מכינים הוא יצירה</p>
+    </div>
+  </section>
+  <GalleryGrid images={galleryImages} title="" />
+  <CTASection />
+</BaseLayout>

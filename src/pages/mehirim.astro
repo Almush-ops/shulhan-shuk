@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroCardForm from '../components/HeroCardForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQ from '../components/FAQ.astro';
+import CTASection from '../components/CTASection.astro';
+
+const pricingFaq = [
+  { question: 'כמה עולה שולחן שוק?', answer: 'המחיר נע בין 45 ל-90 ₪ לאורח, תלוי בסוג השולחן, כמות האורחים ומיקום האירוע. שולחן שוק בשרי הוא הפופולרי ביותר ועולה בין 60 ל-90 ₪ לאורח.' },
+  { question: 'מה כלול במחיר?', answer: 'המחיר כולל את כל חומרי הגלם, הכנה טרייה ביום האירוע, הגעה למקום, סידור ועיצוב השולחן, הגשה ופינוי. אתם רק צריכים לספק שולחן ומקום.' },
+  { question: 'האם יש עלויות נוספות?', answer: 'המחיר שמצוטט כולל הכול. באזורים מרוחקים ייתכן חיוב נוסף עבור נסיעה. תוספות מיוחדות (כמו עמדת בשר חי או שוקולד) בתמחור נפרד.' },
+  { question: 'מה המינימום להזמנה?', answer: 'ברוב סוגי השולחנות המינימום הוא 15 אורחים. בשולחנות המבורגר ושניצל המינימום הוא 20 אורחים.' },
+  { question: 'האם אפשר להתאים את התפריט?', answer: 'בהחלט! אנחנו מתאימים את התפריט בדיוק לצרכים שלכם — העדפות, אלרגיות, תקציב וסוג האירוע. הכול גמיש.' },
+  { question: 'איך משלמים?', answer: 'תשלום במזומן, העברה בנקאית או כרטיס אשראי. נדרש מקדמה של 30% בעת ההזמנה, והיתר ביום האירוע.' },
+  { question: 'מה קורה אם צריך לבטל?', answer: 'ביטול עד 7 ימים לפני האירוע — החזר מלא של המקדמה. ביטול בין 3-7 ימים — החזר של 50%. ביטול פחות מ-3 ימים — ללא החזר.' },
+  { question: 'האם יש הנחה לאירועים גדולים?', answer: 'כן, לאירועים מעל 80 אורחים יש הנחת כמות. צרו קשר וקבלו הצעת מחיר מותאמת.' },
+];
+---
+
+<BaseLayout
+  title="מחירון שולחן שוק — כמה עולה שולחן שוק?"
+  description="מחירון שולחן שוק מפורט — בשרי, חלבי, המבורגר, שניצל ועוד. מחירים שקופים, ללא הפתעות. מ-45 ₪ לאורח."
+  ogType="product"
+>
+  <HeroCardForm
+    title="כמה עולה שולחן שוק?"
+    subtitle="מחירים שקופים ומפורטים — בלי הפתעות ובלי עלויות נסתרות"
+    formTitle="קבלו הצעת מחיר מדויקת"
+  />
+
+  <section class="py-8">
+    <div class="max-w-4xl mx-auto px-4">
+      <Breadcrumbs items={[{ label: 'מחירון' }]} />
+    </div>
+  </section>
+
+  <PricingTable />
+
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-heading text-dark mb-6">מה משפיע על המחיר?</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {[
+          { title: 'סוג השולחן', desc: 'שולחן בשרי יקר יותר משולחן חלבי או צמחוני, בגלל עלות חומרי הגלם.' },
+          { title: 'כמות אורחים', desc: 'ככל שיש יותר אורחים, כך המחיר לאורח יורד. הנחות כמות מ-80 איש.' },
+          { title: 'מיקום האירוע', desc: 'באזור המרכז ללא תוספת. באזורים מרוחקים ייתכן חיוב נסיעה.' },
+          { title: 'תוספות מיוחדות', desc: 'עמדות מיוחדות (בשר חי, שוקולד, סושי) בתמחור נפרד.' },
+          { title: 'עיצוב', desc: 'עיצוב בסיסי כלול במחיר. עיצוב פרימיום עם פרחים ואביזרים — בתוספת.' },
+          { title: 'יום ושעה', desc: 'אירועים בימי שישי/שבת עשויים לכלול תוספת לסופי שבוע.' },
+        ].map((item) => (
+          <div class="bg-white p-5 rounded-2xl shadow-sm border border-border/50">
+            <h3 class="font-bold text-dark mb-1">{item.title}</h3>
+            <p class="text-sm text-muted">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface">
+    <FAQ items={pricingFaq} title="שאלות נפוצות על מחירים" />
+  </section>
+
+  <CTASection
+    title="רוצים הצעת מחיר מדויקת?"
+    subtitle="השאירו פרטים וקבלו הצעה מותאמת אישית תוך שעה"
+  />
+</BaseLayout>

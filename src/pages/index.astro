@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroCardForm from '../components/HeroCardForm.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import PricingTable from '../components/PricingTable.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import TestimonialSection from '../components/TestimonialSection.astro';
+import AreasGrid from '../components/AreasGrid.astro';
+import FAQ from '../components/FAQ.astro';
+import CTASection from '../components/CTASection.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+
+const serviceTypes = [
+  { title: 'שולחן שוק בשרי', description: 'שולחן שוק בשרי עשיר עם בשרים טריים, סלטים, תוספות ולחמים חמים. כשר למהדרין.', href: '/basari/' },
+  { title: 'שולחן שוק חלבי', description: 'שולחן שוק חלבי עם מגוון גבינות, מאפים טריים, סלטים צבעוניים ופירות עונה.', href: '/halavi/' },
+  { title: 'שולחן שוק המבורגר', description: 'עמדת המבורגר עם בשר טחון טרי, לחמניות, תוספות ורטבים. חוויה אמריקאית בסגנון שוק.', href: '/hamburger/' },
+  { title: 'שולחן שוק שניצל', description: 'שניצלים טריים בפריכות מושלמת, עם סלטים, רטבים, פיתות ותוספות. הילדים יאהבו!', href: '/schnitzel/' },
+  { title: 'שולחן שוק קינוחים', description: 'שולחן קינוחים מפנק עם עוגות, מאפים, שוקולד, פירות ומתוקים מכל הלב.', href: '/kinuchim/' },
+  { title: 'שולחן שוק מטוגנים', description: 'עמדת מטוגנים חמים — פלאפל, צ\'יפס, חביתיות, קציצות ועוד. ריח של שוק אמיתי.', href: '/metugganim/' },
+  { title: 'שולחן שוק כשר למהדרין', description: 'כל השולחנות שלנו כשרים למהדרין תחת השגחה צמודה. עם תעודת כשרות.', href: '/kasher/' },
+  { title: 'שולחן שוק צמחוני', description: 'שולחן שוק צמחוני וטבעוני עם מגוון ירקות טריים, חומוס, סלטים ומנות ללא בשר.', href: '/tzimhoni/' },
+];
+
+const eventTypes = [
+  { title: 'יום הולדת', description: 'שולחן שוק ליום הולדת — חגיגה קולינרית שכולם יזכרו.', href: '/yom-huledet/' },
+  { title: 'בר/בת מצווה', description: 'שולחן שוק מרשים לבר ובת מצווה. מגוון שולחנות בשרי, חלבי או מעורב.', href: '/bar-mitzva/' },
+  { title: 'מסיבת רווקות', description: 'שולחן שוק למסיבת רווקות — עיצוב מפנק ותפריט מושלם למסיבה.', href: '/mesibat-ravakot/' },
+  { title: 'חתונה', description: 'קייטרינג שולחן שוק לחתונה — קבלת פנים מרשימה או ארוחה מלאה.', href: '/hatuna/' },
+  { title: 'חינה', description: 'שולחן שוק לחינה — חגיגה מסורתית עם אוכל עשיר ומגוון.', href: '/hina/' },
+  { title: 'אירועי חברה', description: 'קייטרינג שולחן שוק לאירועי חברה, כנסים, השקות ומפגשי עובדים.', href: '/eruey-hevra/' },
+  { title: 'שבת', description: 'שולחן שוק לשבת — ארוחה מוכנה ומפנקת לכל המשפחה.', href: '/shabat/' },
+];
+
+const whyUsFeatures = [
+  { icon: 'clock', title: 'מענה תוך שעה', desc: 'פונים אלינו ומקבלים הצעת מחיר תוך שעה — ללא התחייבות.' },
+  { icon: 'truck', title: 'פריסה ארצית', desc: 'משרתים בכל הארץ — מקריית שמונה ועד אילת, בכל יום בשבוע.' },
+  { icon: 'certificate', title: 'כשר למהדרין', desc: 'כל השולחנות בהשגחת כשרות צמודה עם תעודת כשרות.' },
+  { icon: 'wallet', title: 'מחירים שקופים', desc: 'מחירון ברור וידוע מראש — בלי הפתעות ובלי עלויות נסתרות.' },
+  { icon: 'star', title: 'חומרי גלם טריים', desc: 'עובדים רק עם חומרי גלם טריים ואיכותיים. ההכנה ביום האירוע.' },
+  { icon: 'users', title: 'שירות מקצה לקצה', desc: 'הגעה, סידור, הגשה ופינוי — אתם רק נהנים עם האורחים.' },
+];
+
+const testimonials = [
+  { name: 'מיכל כ.', text: 'הזמנו שולחן שוק בשרי ליום הולדת 40 ופשוט נדהמנו! האוכל היה טרי, מגוון והגשה מרשימה. כל האורחים היו בהלם.', event: 'יום הולדת, 50 אורחים', rating: 5 },
+  { name: 'אורי ד.', text: 'שולחן שוק המבורגר לבר מצווה של הבן. הילדים השתגעו! שירות אדיב, הגיעו בזמן וסידרו הכול. ממליץ בחום.', event: 'בר מצווה, 80 אורחים', rating: 5 },
+  { name: 'רונית ש.', text: 'הזמנתי שולחן שוק חלבי למסיבת רווקות. העיצוב היה מושלם, האוכל טעים ברמות ושרית היתה זמינה לכל שאלה. תודה!', event: 'מסיבת רווקות, 25 אורחות', rating: 5 },
+  { name: 'דוד מ.', text: 'כבר הפעם השלישית שמזמינים לאירועי חברה. תמיד מקצועי, תמיד טרי, ותמיד מקבלים מחמאות. שירות ברמה גבוהה.', event: 'אירוע חברה, 100 איש', rating: 5 },
+];
+
+const faqItems = [
+  { question: 'מה זה שולחן שוק?', answer: 'שולחן שוק הוא קונספט קייטרינג שבו האוכל מוגש על שולחן ארוך בסגנון שוק — עשיר, צבעוני ומגוון. השולחן כולל מגוון מנות, סלטים, לחמים ותוספות. זו חוויה ויזואלית וקולינרית שמתאימה לכל סוג אירוע.' },
+  { question: 'כמה עולה שולחן שוק?', answer: 'המחיר נע בין 45 ל-90 ₪ לאורח, תלוי בסוג השולחן (בשרי, חלבי, המבורגר וכו\'), כמות האורחים והמיקום. <a href="/mehirim/" class="text-brand-600 hover:underline">למחירון המלא לחצו כאן</a>.' },
+  { question: 'לאילו אירועים מתאים שולחן שוק?', answer: 'שולחן שוק מתאים לכל אירוע: ימי הולדת, בר/בת מצווה, חתונות, מסיבות רווקות, חינות, אירועי חברה, שבתות וחגים. אנחנו מתאימים את התפריט והעיצוב לאירוע שלכם.' },
+  { question: 'מה המינימום להזמנה?', answer: 'המינימום הוא 15 אורחים לרוב סוגי השולחנות. לשולחנות המבורגר ושניצל המינימום הוא 20 אורחים.' },
+  { question: 'האם אתם עובדים בכל הארץ?', answer: 'כן! אנחנו מספקים שירות שולחן שוק בכל רחבי ישראל — מקריית שמונה ועד אילת. המשלוח כלול במחיר (באזורים מסוימים עשוי להיות חיוב נוסף).' },
+  { question: 'האם השולחנות כשרים?', answer: 'כן, כל השולחנות שלנו כשרים למהדרין תחת השגחת כשרות צמודה. <a href="/kashrut/" class="text-brand-600 hover:underline">לתעודת הכשרות לחצו כאן</a>.' },
+  { question: 'כמה זמן לפני האירוע צריך להזמין?', answer: 'מומלץ להזמין לפחות שבוע מראש, אבל לעתים יש לנו זמינות גם בהתראה קצרה יותר. צרו קשר ונבדוק.' },
+  { question: 'מה כלול בשירות?', answer: 'השירות כולל: ייעוץ ובניית תפריט, הכנה טרייה ביום האירוע, הגעה למקום, סידור ועיצוב השולחן, הגשה ופינוי. אתם רק צריכים לספק שולחן ומקום.' },
+  { question: 'האם אפשר להתאים תפריט אישי?', answer: 'בהחלט! אנחנו מתאימים את התפריט לפי הצרכים שלכם — אלרגיות, העדפות, תקציב וסוג האירוע. הכול גמיש.' },
+  { question: 'איך מזמינים?', answer: 'פשוט משאירים פרטים בטופס, שולחים הודעת וואטסאפ או מתקשרים. נחזור אליכם תוך שעה עם הצעת מחיר מפורטת.' },
+];
+
+const placeholderGallery = [
+  { src: '/images/gallery/placeholder-1.jpg', alt: 'שולחן שוק בשרי מרשים' },
+  { src: '/images/gallery/placeholder-2.jpg', alt: 'שולחן שוק חלבי עם גבינות' },
+  { src: '/images/gallery/placeholder-3.jpg', alt: 'שולחן שוק המבורגר' },
+  { src: '/images/gallery/placeholder-4.jpg', alt: 'שולחן שוק קינוחים צבעוני' },
+  { src: '/images/gallery/placeholder-5.jpg', alt: 'שולחן שוק ליום הולדת' },
+  { src: '/images/gallery/placeholder-6.jpg', alt: 'עיצוב שולחן שוק לאירוע' },
+  { src: '/images/gallery/placeholder-7.jpg', alt: 'סלטים טריים על שולחן שוק' },
+  { src: '/images/gallery/placeholder-8.jpg', alt: 'שולחן שוק לבר מצווה' },
+];
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FoodService',
+  name: 'שולחן שוק',
+  description: 'שולחן שוק לכל אירוע — בשרי, חלבי, המבורגר, שניצל, קינוחים ועוד. כשר למהדרין. פריסה ארצית.',
+  url: 'https://shulhan-shuk.co.il',
+  // telephone: '+972-XX-XXXXXXX', // TBD
+  areaServed: { '@type': 'Country', name: 'Israel' },
+  priceRange: '₪₪',
+  image: 'https://shulhan-shuk.co.il/images/social.jpg',
+  // aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: 'XX' }, // TBD
+};
+---
+
+<BaseLayout
+  title="שולחן שוק לכל אירוע — בשרי, חלבי, המבורגר ועוד | שולחן שוק"
+  description="שולחן שוק לכל אירוע — בשרי, חלבי, המבורגר, שניצל ועוד. כשר למהדרין, פריסה ארצית, מחירים שקופים. קבלו הצעת מחיר תוך שעה!"
+>
+  <!-- 1. Hero + Lead Form -->
+  <HeroCardForm
+    title="שולחן שוק לכל אירוע"
+    subtitle="בשרי, חלבי, המבורגר, שניצל ועוד — משלוח והגשה בכל הארץ. כשר למהדרין."
+    trustItems={['פריסה ארצית', 'כשר למהדרין', 'מחירים שקופים', 'מענה תוך שעה']}
+  />
+
+  <!-- 2. Trust Numbers -->
+  <TrustBar />
+
+  <!-- 3. מה זה שולחן שוק (Split Image + Text) -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <h2 class="text-2xl md:text-3xl font-heading text-dark mb-6">מה זה שולחן שוק?</h2>
+          <p class="text-muted leading-relaxed mb-4">
+            שולחן שוק הוא חגיגה של אוכל — שולחן ארוך ומרשים עמוס במגוון מנות, סלטים, לחמים טריים ותוספות צבעוניות, מוגש בסגנון שוק אוכל אותנטי. זו דרך מושלמת לארח אורחים בכל סוג אירוע.
+          </p>
+          <p class="text-muted leading-relaxed mb-6">
+            ב<strong class="text-dark">שולחן שוק</strong> אנחנו מתמחים בהכנה והגשה של שולחנות שוק לכל סוג אירוע — ימי הולדת, בר מצווה, חתונות, מסיבות רווקות ואירועי חברה. כל שולחן מוכן טרי ביום האירוע מחומרי גלם איכותיים, ומוגש עם עיצוב מקצועי שמשאיר רושם.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-fresh-500/10 text-fresh-600 rounded-full text-sm font-medium">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              כשר למהדרין
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-fresh-500/10 text-fresh-600 rounded-full text-sm font-medium">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              חומרי גלם טריים
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-fresh-500/10 text-fresh-600 rounded-full text-sm font-medium">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              שירות מקצה לקצה
+            </span>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-brand-100 to-brand-200">
+            <!-- Placeholder for real image -->
+            <div class="w-full h-full flex items-center justify-center">
+              <svg class="w-24 h-24 text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. סוגי שולחנות (8 cards, 4-col) -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-heading text-dark mb-3 text-center">סוגי שולחנות שוק</h2>
+      <p class="text-muted text-center mb-10 max-w-2xl mx-auto">בחרו את סוג השולחן המושלם לאירוע שלכם — כל שולחן מוכן טרי ומותאם אישית</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        {serviceTypes.map((service) => (
+          <ServiceCard
+            title={service.title}
+            description={service.description}
+            href={service.href}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. למה שולחן שוק (Icon + Text Grid, 2x3) -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-heading text-dark mb-3 text-center">למה לבחור בשולחן שוק?</h2>
+      <p class="text-muted text-center mb-10 max-w-2xl mx-auto">אנחנו דואגים לכל פרט — מהייעוץ הראשון ועד הפינוי אחרי האירוע</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {whyUsFeatures.map((feature) => (
+          <div class="flex gap-4 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center">
+              <svg class="w-6 h-6 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-dark mb-1">{feature.title}</h3>
+              <p class="text-sm text-muted">{feature.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. טבלת מחירים -->
+  <PricingTable />
+
+  <!-- 7. גלריה -->
+  <section class="bg-surface">
+    <GalleryGrid images={placeholderGallery} title="האירועים שלנו" />
+  </section>
+
+  <!-- 8. סוגי אירועים (7 cards, 3-col) -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-heading text-dark mb-3 text-center">שולחן שוק לכל אירוע</h2>
+      <p class="text-muted text-center mb-10 max-w-2xl mx-auto">בין אם מדובר ביום הולדת אינטימי או באירוע חברה גדול — יש לנו את השולחן המושלם</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        {eventTypes.map((event) => (
+          <ServiceCard
+            title={event.title}
+            description={event.description}
+            href={event.href}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. המלצות לקוחות -->
+  <section class="bg-surface">
+    <TestimonialSection testimonials={testimonials} />
+  </section>
+
+  <!-- 10. אזורי שירות -->
+  <AreasGrid />
+
+  <!-- 11. שאלות נפוצות -->
+  <section class="bg-surface">
+    <FAQ items={faqItems} />
+  </section>
+
+  <!-- 12. CTA תחתון -->
+  <CTASection />
+
+  <!-- Schema markup -->
+  <SchemaOrg schema={localBusinessSchema} />
+</BaseLayout>

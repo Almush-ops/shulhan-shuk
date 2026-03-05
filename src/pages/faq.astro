@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+import CTASection from '../components/CTASection.astro';
+
+const faqItems = [
+  { question: 'מה זה שולחן שוק?', answer: 'שולחן שוק הוא קונספט קייטרינג שבו האוכל מוגש על שולחן ארוך בסגנון שוק — עשיר, צבעוני ומגוון. השולחן כולל מגוון מנות, סלטים, לחמים ותוספות.' },
+  { question: 'כמה עולה שולחן שוק?', answer: 'המחיר נע בין 45 ל-90 ₪ לאורח, תלוי בסוג השולחן וכמות האורחים. <a href="/mehirim/" class="text-brand-600 hover:underline">למחירון המלא</a>.' },
+  { question: 'לאילו אירועים מתאים שולחן שוק?', answer: 'שולחן שוק מתאים לכל אירוע: ימי הולדת, בר/בת מצווה, חתונות, מסיבות רווקות, חינות, אירועי חברה, שבתות וחגים.' },
+  { question: 'מה המינימום להזמנה?', answer: 'ברוב השולחנות המינימום הוא 15 אורחים. בשולחנות המבורגר ושניצל — 20 אורחים.' },
+  { question: 'האם אתם עובדים בכל הארץ?', answer: 'כן! אנחנו מספקים שירות שולחן שוק בכל רחבי ישראל.' },
+  { question: 'האם השולחנות כשרים?', answer: 'כן, כל השולחנות כשרים למהדרין תחת השגחת כשרות צמודה.' },
+  { question: 'כמה זמן לפני האירוע צריך להזמין?', answer: 'מומלץ לפחות שבוע מראש, אבל לעתים יש זמינות גם בהתראה קצרה.' },
+  { question: 'מה כלול בשירות?', answer: 'ייעוץ, בניית תפריט, הכנה טרייה, הגעה, סידור, הגשה ופינוי.' },
+  { question: 'האם אפשר להתאים תפריט אישי?', answer: 'בהחלט! אנחנו מתאימים את התפריט לפי הצרכים שלכם — אלרגיות, העדפות, תקציב וסוג האירוע.' },
+  { question: 'איך מזמינים?', answer: 'משאירים פרטים בטופס, שולחים הודעת וואטסאפ או מתקשרים. נחזור אליכם תוך שעה.' },
+];
+---
+
+<BaseLayout
+  title="שאלות נפוצות — שולחן שוק"
+  description="שאלות נפוצות על שולחנות שוק — מחירים, סוגי שולחנות, כשרות, אזורי שירות ועוד. כל התשובות במקום אחד."
+>
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <Breadcrumbs items={[{ label: 'שאלות נפוצות' }]} />
+      <h1 class="text-3xl md:text-4xl font-heading text-dark mb-3 text-center">שאלות נפוצות</h1>
+      <p class="text-muted text-center mb-8">לא מצאתם תשובה? צרו קשר ונשמח לעזור</p>
+    </div>
+  </section>
+  <FAQ items={faqItems} title="" />
+  <CTASection />
+</BaseLayout>

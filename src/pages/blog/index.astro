@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout
+  title="בלוג שולחן שוק — מדריכים וטיפים"
+  description="מדריכים, טיפים ומאמרים על שולחנות שוק, קייטרינג לאירועים, עיצוב שולחנות ועוד."
+  noindex={sortedPosts.length === 0}
+>
+  <section class="py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <Breadcrumbs items={[{ label: 'בלוג' }]} />
+      <h1 class="text-3xl md:text-4xl font-heading text-dark mb-8">בלוג שולחן שוק</h1>
+
+      {sortedPosts.length > 0 ? (
+        <div class="grid gap-6">
+          {sortedPosts.map((post) => (
+            <a href={`/blog/${post.slug}/`} class="group block bg-white rounded-2xl shadow-sm border border-border/50 overflow-hidden hover:shadow-lg transition-all">
+              <div class="p-6">
+                <time class="text-sm text-muted">{post.data.date.toLocaleDateString('he-IL')}</time>
+                <h2 class="text-xl font-bold text-dark group-hover:text-brand-600 transition-colors mt-2 mb-3">
+                  {post.data.title}
+                </h2>
+                <p class="text-muted line-clamp-3">{post.data.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p class="text-muted text-center py-12">מאמרים בקרוב...</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>

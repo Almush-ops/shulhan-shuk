@@ -1,0 +1,40 @@
+---
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: GalleryImage[];
+  title?: string;
+  columns?: 3 | 4;
+}
+
+const { images, title = 'גלריה', columns = 4 } = Astro.props;
+const gridClass = columns === 4
+  ? 'grid-cols-2 md:grid-cols-4'
+  : 'grid-cols-2 md:grid-cols-3';
+---
+
+<section class="py-16 md:py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-heading text-dark mb-8 text-center">{title}</h2>
+    <div class={`grid ${gridClass} gap-3 md:gap-4`}>
+      {images.map((img) => (
+        <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow cursor-pointer">
+          <img
+            src={img.src}
+            alt={img.alt}
+            width="400"
+            height="400"
+            loading="lazy"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+            <p class="text-white text-sm">{img.alt}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

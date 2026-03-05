@@ -1,0 +1,77 @@
+---
+const currentYear = new Date().getFullYear();
+const phone = ''; // TBD from client
+const whatsapp = ''; // TBD from client
+---
+
+<footer class="bg-brand-900 text-brand-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-1">
+        <h3 class="text-white text-2xl font-heading mb-4">שולחן שוק</h3>
+        <p class="text-sm text-brand-300 leading-relaxed mb-4">
+          שולחן שוק לכל אירוע — בשרי, חלבי, המבורגר ועוד. משלוח והגשה בכל הארץ.
+        </p>
+        {phone && (
+          <a href={`tel:${phone}`} class="text-white font-semibold hover:text-brand-300 transition-colors" dir="ltr">
+            {phone}
+          </a>
+        )}
+      </div>
+
+      <!-- שולחנות -->
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4">סוגי שולחנות</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/basari/" class="hover:text-white transition-colors">שולחן שוק בשרי</a></li>
+          <li><a href="/halavi/" class="hover:text-white transition-colors">שולחן שוק חלבי</a></li>
+          <li><a href="/hamburger/" class="hover:text-white transition-colors">שולחן שוק המבורגר</a></li>
+          <li><a href="/schnitzel/" class="hover:text-white transition-colors">שולחן שוק שניצל</a></li>
+          <li><a href="/kinuchim/" class="hover:text-white transition-colors">שולחן שוק קינוחים</a></li>
+          <li><a href="/kasher/" class="hover:text-white transition-colors">כשר למהדרין</a></li>
+        </ul>
+      </div>
+
+      <!-- אירועים -->
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4">אירועים</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/yom-huledet/" class="hover:text-white transition-colors">יום הולדת</a></li>
+          <li><a href="/bar-mitzva/" class="hover:text-white transition-colors">בר/בת מצווה</a></li>
+          <li><a href="/mesibat-ravakot/" class="hover:text-white transition-colors">מסיבת רווקות</a></li>
+          <li><a href="/hatuna/" class="hover:text-white transition-colors">חתונה</a></li>
+          <li><a href="/hina/" class="hover:text-white transition-colors">חינה</a></li>
+          <li><a href="/eruey-hevra/" class="hover:text-white transition-colors">אירועי חברה</a></li>
+        </ul>
+      </div>
+
+      <!-- מידע -->
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4">מידע</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/mehirim/" class="hover:text-white transition-colors">מחירון</a></li>
+          <li><a href="/galeria/" class="hover:text-white transition-colors">גלריה</a></li>
+          <li><a href="/odot/" class="hover:text-white transition-colors">אודות</a></li>
+          <li><a href="/blog/" class="hover:text-white transition-colors">בלוג</a></li>
+          <li><a href="/tzor-kesher/" class="hover:text-white transition-colors">צור קשר</a></li>
+          <li><a href="/faq/" class="hover:text-white transition-colors">שאלות נפוצות</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-brand-800 mt-10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-brand-400">
+      <p>&copy; {currentYear} שולחן שוק. כל הזכויות שמורות.</p>
+      <div class="flex items-center gap-4">
+        <a href="/accessibility/" class="hover:text-white transition-colors">הצהרת נגישות</a>
+        <span>|</span>
+        <a href="/privacy/" class="hover:text-white transition-colors">מדיניות פרטיות</a>
+        <span>|</span>
+        <a href="/terms/" class="hover:text-white transition-colors">תנאי שימוש</a>
+      </div>
+    </div>
+  </div>
+</footer>

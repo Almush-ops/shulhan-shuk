@@ -1,0 +1,49 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FAQItem[];
+  title?: string;
+}
+
+const { items, title = 'שאלות נפוצות' } = Astro.props;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer.replace(/<[^>]*>/g, ''),
+    },
+  })),
+};
+---
+
+<section class="py-16 md:py-20">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-heading text-dark mb-8 text-center">{title}</h2>
+    <div class="space-y-3">
+      {items.map((item) => (
+        <details class="group border border-border rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+          <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-surface/50 transition-colors">
+            <span class="font-medium text-dark pe-4">{item.question}</span>
+            <svg class="w-5 h-5 text-muted flex-shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-5 pb-5 text-muted leading-relaxed border-t border-border/50 pt-4">
+            <Fragment set:html={item.answer} />
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

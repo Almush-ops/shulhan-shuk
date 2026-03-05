@@ -1,0 +1,41 @@
+---
+interface Step {
+  number: number;
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+interface Props {
+  steps?: Step[];
+  title?: string;
+}
+
+const { title = 'איך זה עובד?', steps = [
+  { number: 1, title: 'פנייה', description: 'יוצרים קשר בטלפון, וואטסאפ או טופס' },
+  { number: 2, title: 'ייעוץ', description: 'מתאימים תפריט מושלם לאירוע שלכם' },
+  { number: 3, title: 'הכנה', description: 'מכינים הכול טרי ביום האירוע' },
+  { number: 4, title: 'אירוע', description: 'מגיעים, מסדרים ומגישים — אתם רק נהנים' },
+] } = Astro.props;
+---
+
+<section class="py-16 md:py-20 bg-surface">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-heading text-dark mb-12 text-center">{title}</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      {steps.map((step, i) => (
+        <div class="text-center relative">
+          {/* Connector line between steps */}
+          {i < steps.length - 1 && (
+            <div class="hidden md:block absolute top-8 start-0 -translate-x-1/2 w-full h-0.5 bg-brand-200"></div>
+          )}
+          <div class="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-600 text-white text-2xl font-bold mb-4 shadow-md">
+            {step.number}
+          </div>
+          <h3 class="font-bold text-dark mb-2">{step.title}</h3>
+          <p class="text-sm text-muted">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

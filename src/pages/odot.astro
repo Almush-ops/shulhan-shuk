@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<BaseLayout
+  title="אודות שולחן שוק — הסיפור שלנו"
+  description="הכירו את שולחן שוק — שירות קייטרינג שולחנות שוק מקצועי לכל אירוע. כשר למהדרין, פריסה ארצית."
+>
+  <section class="py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <Breadcrumbs items={[{ label: 'אודות' }]} />
+      <h1 class="text-3xl md:text-4xl font-heading text-dark mb-8">אודות שולחן שוק</h1>
+
+      <div class="prose max-w-none">
+        <p>ב<strong>שולחן שוק</strong> אנחנו מאמינים שאוכל טוב הוא הלב של כל אירוע. אנחנו מתמחים בהכנה והגשה של שולחנות שוק מרשימים לכל סוג אירוע — ימי הולדת, בר מצווה, חתונות, מסיבות רווקות, חינות ואירועי חברה.</p>
+
+        <p>כל שולחן שוק שלנו מוכן טרי ביום האירוע מחומרי גלם איכותיים, ומוגש בסגנון שוק אוכל אותנטי — צבעוני, עשיר ומזמין. אנחנו דואגים לכל פרט, מהייעוץ הראשון ועד הפינוי אחרי האירוע.</p>
+
+        <h2>הערכים שלנו</h2>
+        <ul>
+          <li><strong>טריות</strong> — חומרי גלם טריים בלבד, הכנה ביום האירוע</li>
+          <li><strong>כשרות</strong> — כל השולחנות כשרים למהדרין תחת השגחה צמודה</li>
+          <li><strong>שקיפות</strong> — מחירים ברורים וידועים מראש, בלי הפתעות</li>
+          <li><strong>שירות</strong> — מענה מהיר, ייעוץ אישי, ושירות מקצה לקצה</li>
+        </ul>
+
+        <h2>למה לבחור בנו?</h2>
+        <p>אנחנו לא סתם עוד שירות קייטרינג. אנחנו מביאים את חוויית השוק לאירוע שלכם — עם תשומת לב לכל פרט, מהתפריט ועד העיצוב. כל שולחן שוק הוא יצירה שמותאמת בדיוק לאירוע שלכם.</p>
+
+        <!-- Placeholder for chef/owner bio + photo - to be added when received from client -->
+      </div>
+    </div>
+  </section>
+
+  <ProcessSteps />
+  <CTASection />
+</BaseLayout>
