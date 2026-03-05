@@ -3,6 +3,7 @@ title: "שולחן שוק לחינה — קייטרינג שולחן שוק לח
 description: "שולחן שוק לחינה — אירוח עשיר ומרשים לחגיגת החינה. כשר למהדרין, פריסה ארצית. הזמינו עכשיו!"
 heroTitle: "שולחן שוק לחינה"
 heroSubtitle: "אירוח עשיר ומסורתי שמכבד את המסורת ומפנק את האורחים"
+image: "/images/hero/hero-06.webp"
 recommendedTables:
   - { title: "שולחן שוק בשרי", href: "/basari/" }
   - { title: "שולחן שוק מטוגנים", href: "/metugganim/" }

@@ -14,12 +14,10 @@ interface Props {
 }
 
 const { title = 'מחירון שולחן שוק', subtitle = 'מחירים כוללים הכנה, הגעה, סידור והגשה', rows = [
-  { type: 'שולחן שוק בשרי', minGuests: '15 איש', priceRange: '₪60-90 לאורח', includes: 'בשרים, סלטים, תוספות, לחמים', popular: true },
-  { type: 'שולחן שוק חלבי', minGuests: '15 איש', priceRange: '₪50-80 לאורח', includes: 'גבינות, מאפים, סלטים, פירות' },
-  { type: 'שולחן שוק המבורגר', minGuests: '20 איש', priceRange: '₪55-85 לאורח', includes: 'המבורגר, תוספות, רטבים, לחמניות' },
-  { type: 'שולחן שוק שניצל', minGuests: '20 איש', priceRange: '₪50-75 לאורח', includes: 'שניצלים, סלטים, תוספות, רטבים' },
-  { type: 'שולחן שוק קינוחים', minGuests: '15 איש', priceRange: '₪45-70 לאורח', includes: 'עוגות, מאפים, פירות, שוקולד' },
-  { type: 'שולחן שוק מטוגנים', minGuests: '20 איש', priceRange: '₪50-80 לאורח', includes: 'פלאפל, צ\'יפס, חביתיות, קציצות' },
+  { type: '20 סועדים', minGuests: '20 איש', priceRange: '₪95 לאורח', includes: 'ירקות וסלטים, מטוגנים, עיקריות, פירות וקינוחים', popular: false },
+  { type: '30 סועדים', minGuests: '30 איש', priceRange: '₪90 לאורח', includes: 'ירקות וסלטים, מטוגנים, עיקריות, פירות וקינוחים', popular: false },
+  { type: '40 סועדים', minGuests: '40 איש', priceRange: '₪85 לאורח', includes: 'ירקות וסלטים, מטוגנים, עיקריות, פירות וקינוחים', popular: true },
+  { type: '50 סועדים', minGuests: '50 איש', priceRange: '₪80 לאורח', includes: 'ירקות וסלטים, מטוגנים, עיקריות, פירות וקינוחים', popular: false },
 ] } = Astro.props;
 ---
 

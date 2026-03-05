@@ -50,6 +50,7 @@ const areas = defineCollection({
     description: z.string(),
     city: z.string(),
     heroTitle: z.string(),
+    image: z.string().optional(),
     nearbyAreas: z.array(z.string()).optional(),
     faq: z.array(z.object({
       question: z.string(),

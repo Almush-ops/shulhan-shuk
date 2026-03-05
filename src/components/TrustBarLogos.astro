@@ -1,0 +1,43 @@
+---
+interface Logo {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  title?: string;
+  logos?: Logo[];
+}
+
+const { title = 'מהלקוחות שלנו', logos = [
+  { src: '/images/logos/shufersal.webp', alt: 'שופרסל' },
+  { src: '/images/logos/matrix.webp', alt: 'מטריקס' },
+  { src: '/images/logos/egged.webp', alt: 'אגד' },
+  { src: '/images/logos/pmo.webp', alt: 'משרד ראש הממשלה' },
+  { src: '/images/logos/amal.webp', alt: 'רשת עמל' },
+  { src: '/images/logos/ort.webp', alt: 'רשת אורט' },
+  { src: '/images/logos/barkai.webp', alt: 'מרכז ברקאי' },
+  { src: '/images/logos/primor.webp', alt: 'פרימור' },
+  { src: '/images/logos/elem.webp', alt: 'אלם מוצרי חשמל' },
+  { src: '/images/logos/automazia.webp', alt: 'אוטומציה החדשה' },
+  { src: '/images/logos/dalton.webp', alt: 'דלתון' },
+] } = Astro.props;
+---
+
+<section class="py-10 md:py-12 bg-white border-b border-border/30">
+  <div class="max-w-7xl mx-auto px-4">
+    <p class="text-center text-sm text-muted mb-6">{title}</p>
+    <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+      {logos.map((logo) => (
+        <img
+          src={logo.src}
+          alt={logo.alt}
+          class="h-8 md:h-10 w-auto object-contain"
+          width="120"
+          height="40"
+          loading="lazy"
+        />
+      ))}
+    </div>
+  </div>
+</section>

@@ -5,18 +5,22 @@ import GalleryGrid from '../components/GalleryGrid.astro';
 import CTASection from '../components/CTASection.astro';
 
 const galleryImages = [
-  { src: '/images/gallery/placeholder-1.jpg', alt: 'שולחן שוק בשרי מרשים לאירוע' },
-  { src: '/images/gallery/placeholder-2.jpg', alt: 'שולחן שוק חלבי עם גבינות ומאפים' },
-  { src: '/images/gallery/placeholder-3.jpg', alt: 'שולחן שוק המבורגר עם תוספות' },
-  { src: '/images/gallery/placeholder-4.jpg', alt: 'שולחן שוק קינוחים צבעוני' },
-  { src: '/images/gallery/placeholder-5.jpg', alt: 'שולחן שוק ליום הולדת' },
-  { src: '/images/gallery/placeholder-6.jpg', alt: 'עיצוב שולחן שוק פרימיום' },
-  { src: '/images/gallery/placeholder-7.jpg', alt: 'סלטים טריים על שולחן שוק' },
-  { src: '/images/gallery/placeholder-8.jpg', alt: 'שולחן שוק לבר מצווה' },
-  { src: '/images/gallery/placeholder-9.jpg', alt: 'שולחן שוק בשרי מלא' },
-  { src: '/images/gallery/placeholder-10.jpg', alt: 'שולחן שוק חלבי לשבת' },
-  { src: '/images/gallery/placeholder-11.jpg', alt: 'שולחן שוק למסיבת רווקות' },
-  { src: '/images/gallery/placeholder-12.jpg', alt: 'שולחן שוק לאירוע חברה' },
+  { src: '/images/gallery/img-01.webp', alt: 'שולחן שוק בשרי מרשים לאירוע' },
+  { src: '/images/gallery/img-04.webp', alt: 'שולחן שוק ארוך עם מגוון מנות' },
+  { src: '/images/gallery/img-06.webp', alt: 'שולחן שוק חגיגי' },
+  { src: '/images/gallery/img-10.webp', alt: 'שולחן שוק עם ירקות טריים' },
+  { src: '/images/gallery/img-15.webp', alt: 'שולחן שוק ליום הולדת' },
+  { src: '/images/gallery/img-20.webp', alt: 'מגש ירקות טריים צבעוני' },
+  { src: '/images/gallery/img-25.webp', alt: 'עיצוב שולחן שוק פרימיום' },
+  { src: '/images/gallery/img-30.webp', alt: 'שולחן שוק לבר מצווה' },
+  { src: '/images/gallery/img-35.webp', alt: 'שולחן שוק בשרי מלא' },
+  { src: '/images/gallery/img-40.webp', alt: 'שולחן שוק לאירוע' },
+  { src: '/images/gallery/img-50.webp', alt: 'שולחן שוק למסיבת רווקות' },
+  { src: '/images/gallery/img-60.webp', alt: 'שולחן שוק לאירוע חברה' },
+  { src: '/images/gallery/img-65.webp', alt: 'סלטים טריים על שולחן שוק' },
+  { src: '/images/gallery/img-70.webp', alt: 'שולחן שוק מוכן להגשה' },
+  { src: '/images/gallery/img-75.webp', alt: 'שולחן שוק מעוצב' },
+  { src: '/images/gallery/img-80.webp', alt: 'שולחן שוק חלבי לשבת' },
 ];
 ---
 
@@ -32,5 +36,5 @@ const galleryImages = [
     </div>
   </section>
   <GalleryGrid images={galleryImages} title="" />
-  <CTASection />
+  <CTASection phone="055-432-7900" />
 </BaseLayout>

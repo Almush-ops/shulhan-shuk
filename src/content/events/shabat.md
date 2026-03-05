@@ -3,6 +3,7 @@ title: "שולחן שוק לשבת — קייטרינג שולחן שוק לשב
 description: "שולחן שוק לשבת — אירוח מפנק לארוחת שישי או סעודה שלישית. כשר למהדרין, פריסה ארצית. הזמינו עכשיו!"
 heroTitle: "שולחן שוק לשבת"
 heroSubtitle: "ארוחת שבת מפנקת בסגנון שוק — שפע, טעם ומסורת"
+image: "/images/hero/hero-07.webp"
 recommendedTables:
   - { title: "שולחן שוק בשרי", href: "/basari/" }
   - { title: "שולחן שוק חלבי", href: "/halavi/" }

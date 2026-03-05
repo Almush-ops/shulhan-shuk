@@ -147,17 +147,25 @@ const {
         const name = fd.get('wa-name') as string;
         const phone = fd.get('wa-phone') as string;
 
-        // TODO: Save lead to Supabase here
-        // try {
-        //   await fetch('WEBHOOK_URL', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({ name, phone, source: 'whatsapp', page: window.location.pathname }),
-        //   });
-        // } catch {}
+        // Send lead to webhook
+        try {
+          const h1 = document.querySelector('h1')?.textContent?.trim() || document.title;
+          await fetch('https://hook.eu1.make.com/vafte51w7nn4tmtyejfl46cooalp0aru', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              'your-name': name,
+              'phone': phone,
+              'page-title': h1,
+              'website': 'שולחן שוק',
+              'center-client': 'שרית',
+              'center-phone': '0542013383',
+            }),
+          });
+        } catch {}
 
         // Redirect to WhatsApp
-        const waNumber = '972XXXXXXXXX'; // TBD from client
+        const waNumber = '9725543279000';
         const msg = encodeURIComponent(`שלום, שמי ${name}. אשמח לקבל הצעת מחיר לשולחן שוק.`);
         window.open(`https://wa.me/${waNumber}?text=${msg}`, '_blank');
         closeWaModal();
