@@ -27,29 +27,6 @@ const {
   formFields = [
     { name: 'name', label: 'שם מלא', type: 'text' as const, placeholder: 'הזינו שם מלא', required: true },
     { name: 'phone', label: 'טלפון', type: 'tel' as const, placeholder: '050-0000000', required: true },
-    {
-      name: 'event_type', label: 'סוג אירוע', type: 'select' as const, placeholder: 'בחרו סוג אירוע', required: true,
-      options: [
-        { value: 'birthday', label: 'יום הולדת' },
-        { value: 'bar-mitzva', label: 'בר/בת מצווה' },
-        { value: 'wedding', label: 'חתונה' },
-        { value: 'bachelorette', label: 'מסיבת רווקות' },
-        { value: 'henna', label: 'חינה' },
-        { value: 'corporate', label: 'אירוע חברה' },
-        { value: 'shabbat', label: 'שבת/חג' },
-        { value: 'other', label: 'אחר' },
-      ],
-    },
-    {
-      name: 'guests', label: 'כמות אורחים', type: 'select' as const, placeholder: 'בחרו כמות', required: true,
-      options: [
-        { value: '10-20', label: '10-20 אורחים' },
-        { value: '20-40', label: '20-40 אורחים' },
-        { value: '40-60', label: '40-60 אורחים' },
-        { value: '60-100', label: '60-100 אורחים' },
-        { value: '100+', label: 'מעל 100 אורחים' },
-      ],
-    },
   ],
   submitText = 'קבלו הצעת מחיר',
 } = Astro.props;

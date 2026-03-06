@@ -18,10 +18,14 @@ const gridClass = columns === 4
 
 <section class="py-16 md:py-20">
   <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl font-heading text-dark mb-8 text-center">{title}</h2>
+    {title && <h2 class="text-2xl md:text-3xl font-heading text-dark mb-4 text-center">{title}</h2>}
     <div class={`grid ${gridClass} gap-3 md:gap-4`}>
       {images.map((img) => (
-        <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow cursor-pointer">
+        <div
+          class="gallery-item group relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow cursor-pointer"
+          data-src={img.src}
+          data-alt={img.alt}
+        >
           <img
             src={img.src}
             alt={img.alt}
@@ -38,3 +42,74 @@ const gridClass = columns === 4
     </div>
   </div>
 </section>
+
+<!-- Lightbox -->
+<div id="gallery-lightbox" class="fixed inset-0 z-[60] hidden bg-dark/90 backdrop-blur-sm flex items-center justify-center" role="dialog" aria-label="תמונה מוגדלת">
+  <button id="lightbox-close" class="absolute top-4 end-4 text-white/80 hover:text-white transition-colors z-10" aria-label="סגור">
+    <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  <button id="lightbox-prev" class="absolute start-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors z-10" aria-label="תמונה קודמת">
+    <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+  <button id="lightbox-next" class="absolute end-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors z-10" aria-label="תמונה הבאה">
+    <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  <img id="lightbox-img" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl" />
+</div>
+
+<script>
+  const lightbox = document.getElementById('gallery-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  const items = document.querySelectorAll('.gallery-item');
+  let currentIndex = 0;
+
+  function openLightbox(index: number) {
+    const item = items[index] as HTMLElement;
+    if (!item) return;
+    currentIndex = index;
+    lightboxImg.src = item.dataset.src || '';
+    lightboxImg.alt = item.dataset.alt || '';
+    lightbox?.classList.remove('hidden');
+    lightbox?.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox?.classList.add('hidden');
+    lightbox?.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function navigate(dir: number) {
+    currentIndex = (currentIndex + dir + items.length) % items.length;
+    openLightbox(currentIndex);
+  }
+
+  items.forEach((item, i) => {
+    item.addEventListener('click', () => openLightbox(i));
+  });
+
+  closeBtn?.addEventListener('click', closeLightbox);
+  prevBtn?.addEventListener('click', () => navigate(-1));
+  nextBtn?.addEventListener('click', () => navigate(1));
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (lightbox?.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') navigate(-1); // RTL
+    if (e.key === 'ArrowLeft') navigate(1);  // RTL
+  });
+</script>

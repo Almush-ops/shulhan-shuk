@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import GalleryGrid from '../components/GalleryGrid.astro';
 import CTASection from '../components/CTASection.astro';
 
@@ -30,9 +29,8 @@ const galleryImages = [
 >
   <section class="py-12">
     <div class="max-w-7xl mx-auto px-4">
-      <Breadcrumbs items={[{ label: 'גלריה' }]} />
       <h1 class="text-3xl md:text-4xl font-heading text-dark mb-3 text-center">גלריה</h1>
-      <p class="text-muted text-center mb-8 max-w-2xl mx-auto">תמונות מאירועים אמיתיים — כל שולחן שוק שאנחנו מכינים הוא יצירה</p>
+      <p class="text-muted text-center mb-4 max-w-2xl mx-auto">תמונות מאירועים אמיתיים — כל שולחן שוק שאנחנו מכינים הוא יצירה</p>
     </div>
   </section>
   <GalleryGrid images={galleryImages} title="" />

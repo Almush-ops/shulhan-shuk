@@ -103,10 +103,12 @@
   }
 }
 
-/* Smooth accordion animation for <details> */
-details .accordion-body {
-  overflow: hidden;
-  transition: height 0.3s ease;
+/* FAQ smooth accordion animation */
+.grid-rows-\[0fr\] {
+  grid-template-rows: 0fr;
+}
+.grid-rows-\[1fr\] {
+  grid-template-rows: 1fr;
 }
 
 /* Accessibility features */

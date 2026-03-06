@@ -14,24 +14,24 @@ import SchemaOrg from '../components/SchemaOrg.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 
 const serviceTypes = [
-  { title: 'שולחן שוק בשרי', description: 'שולחן שוק בשרי עם שניצל, המבורגר, 9 סוגי מטוגנים, סלטים טריים וקינוחי בוטיק. אפשר להוסיף פרגיות, קבב, אסאדו מפורק, גלגלי שווארמה ועוד.', href: '/basari/' },
-  { title: 'שולחן שוק חלבי', description: 'שולחן שוק חלבי עם גבינות מובחרות, מאפים טריים מהתנור, סלטים צבעוניים, פירות עונתיים, מריחות ודיפים. מושלם לברנצ\'ים ואירועים אלגנטיים.', href: '/halavi/' },
-  { title: 'שולחן שוק המבורגר', description: 'לחמניות עם המבורגר טרי לצד צ\'יפס, צ\'יפס בטטה, טבעות בצל, סלטים, חומוס וטחינה. חגיגת המבורגר בסגנון שוק.', href: '/hamburger/' },
-  { title: 'שולחן שוק שניצל', description: 'לחמניות עם שניצל פריך, צ\'יפס, כדורי פירה, סלטים טריים, חומוס וטחינה. המנה שכולם אוהבים — בסגנון שוק מפנק.', href: '/schnitzel/' },
-  { title: 'שולחן שוק קינוחים', description: 'אקלרים, פבלובות, פחזניות, קינוחי כוסות, קרמבו פירות יער, קרמבו בננה, קינוחי מוס ומגש פירות העונה — חגיגה מתוקה.', href: '/kinuchim/' },
-  { title: 'שולחן שוק מטוגנים', description: 'צ\'יפס, צ\'יפס בטטה, טבעות בצל, סיגרים בשר, פסטלים, נקניקיות נשנוש, כדורי פירה, פלאפל וקובה — 9 סוגי מטוגנים חמים.', href: '/metugganim/' },
-  { title: 'שולחן שוק כשר למהדרין', description: 'כל השולחנות שלנו כשרים למהדרין בהשגחה צמודה. תעודת כשרות מהדרין, חומרי גלם מהודרים והפרדה מלאה בין בשרי לחלבי.', href: '/kasher/' },
-  { title: 'שולחן שוק צמחוני', description: 'חומוס, טחינה, פלאפל, סלטים טריים, ירקות, מטבוחה, כרוב סגול, פירות העונה וקינוחי בוטיק — שולחן שוק עשיר ללא בשר.', href: '/tzimhoni/' },
+  { title: 'שולחן שוק בשרי', description: 'שולחן שוק בשרי עם שניצל, המבורגר, 9 סוגי מטוגנים, סלטים טריים וקינוחי בוטיק. אפשר להוסיף פרגיות, קבב, אסאדו מפורק, גלגלי שווארמה ועוד.', href: '/basari/', image: '/images/gallery/img-01.webp' },
+  { title: 'שולחן שוק חלבי', description: 'שולחן שוק חלבי עם גבינות מובחרות, מאפים טריים מהתנור, סלטים צבעוניים, פירות עונתיים, מריחות ודיפים. מושלם לברנצ\'ים ואירועים אלגנטיים.', href: '/halavi/', image: '/images/gallery/img-10.webp' },
+  { title: 'שולחן שוק המבורגר', description: 'לחמניות עם המבורגר טרי לצד צ\'יפס, צ\'יפס בטטה, טבעות בצל, סלטים, חומוס וטחינה. חגיגת המבורגר בסגנון שוק.', href: '/hamburger/', image: '/images/gallery/img-04.webp' },
+  { title: 'שולחן שוק שניצל', description: 'לחמניות עם שניצל פריך, צ\'יפס, כדורי פירה, סלטים טריים, חומוס וטחינה. המנה שכולם אוהבים — בסגנון שוק מפנק.', href: '/schnitzel/', image: '/images/gallery/img-15.webp' },
+  { title: 'שולחן שוק קינוחים', description: 'אקלרים, פבלובות, פחזניות, קינוחי כוסות, קרמבו פירות יער, קרמבו בננה, קינוחי מוס ומגש פירות העונה — חגיגה מתוקה.', href: '/kinuchim/', image: '/images/gallery/img-20.webp' },
+  { title: 'שולחן שוק מטוגנים', description: 'צ\'יפס, צ\'יפס בטטה, טבעות בצל, סיגרים בשר, פסטלים, נקניקיות נשנוש, כדורי פירה, פלאפל וקובה — 9 סוגי מטוגנים חמים.', href: '/metugganim/', image: '/images/gallery/img-06.webp' },
+  { title: 'שולחן שוק כשר למהדרין', description: 'כל השולחנות שלנו כשרים למהדרין בהשגחה צמודה. תעודת כשרות מהדרין, חומרי גלם מהודרים והפרדה מלאה בין בשרי לחלבי.', href: '/kasher/', image: '/images/gallery/img-30.webp' },
+  { title: 'שולחן שוק צמחוני', description: 'חומוס, טחינה, פלאפל, סלטים טריים, ירקות, מטבוחה, כרוב סגול, פירות העונה וקינוחי בוטיק — שולחן שוק עשיר ללא בשר.', href: '/tzimhoni/', image: '/images/gallery/img-40.webp' },
 ];
 
 const eventTypes = [
-  { title: 'יום הולדת', description: 'שולחן שוק ליום הולדת — חגיגה קולינרית שכולם יזכרו.', href: '/yom-huledet/' },
-  { title: 'בר/בת מצווה', description: 'שולחן שוק מרשים לבר ובת מצווה. מגוון שולחנות בשרי, חלבי או מעורב.', href: '/bar-mitzva/' },
-  { title: 'מסיבת רווקות', description: 'שולחן שוק למסיבת רווקות — עיצוב מפנק ותפריט מושלם למסיבה.', href: '/mesibat-ravakot/' },
-  { title: 'חתונה', description: 'קייטרינג שולחן שוק לחתונה — קבלת פנים מרשימה או ארוחה מלאה.', href: '/hatuna/' },
-  { title: 'חינה', description: 'שולחן שוק לחינה — חגיגה מסורתית עם אוכל עשיר ומגוון.', href: '/hina/' },
-  { title: 'אירועי חברה', description: 'קייטרינג שולחן שוק לאירועי חברה, כנסים, השקות ומפגשי עובדים.', href: '/eruey-hevra/' },
-  { title: 'שבת', description: 'שולחן שוק לשבת — ארוחה מוכנה ומפנקת לכל המשפחה.', href: '/shabat/' },
+  { title: 'יום הולדת', description: 'שולחן שוק ליום הולדת — חגיגה קולינרית שכולם יזכרו.', href: '/yom-huledet/', image: '/images/gallery/img-25.webp' },
+  { title: 'בר/בת מצווה', description: 'שולחן שוק מרשים לבר ובת מצווה. מגוון שולחנות בשרי, חלבי או מעורב.', href: '/bar-mitzva/', image: '/images/gallery/img-32.webp' },
+  { title: 'מסיבת רווקות', description: 'שולחן שוק למסיבת רווקות — עיצוב מפנק ותפריט מושלם למסיבה.', href: '/mesibat-ravakot/', image: '/images/gallery/img-35.webp' },
+  { title: 'חתונה', description: 'קייטרינג שולחן שוק לחתונה — קבלת פנים מרשימה או ארוחה מלאה.', href: '/hatuna/', image: '/images/gallery/img-45.webp' },
+  { title: 'חינה', description: 'שולחן שוק לחינה — חגיגה מסורתית עם אוכל עשיר ומגוון.', href: '/hina/', image: '/images/gallery/img-50.webp' },
+  { title: 'אירועי חברה', description: 'קייטרינג שולחן שוק לאירועי חברה, כנסים, השקות ומפגשי עובדים.', href: '/eruey-hevra/', image: '/images/gallery/img-55.webp' },
+  { title: 'שבת', description: 'שולחן שוק לשבת — ארוחה מוכנה ומפנקת לכל המשפחה.', href: '/shabat/', image: '/images/gallery/img-60.webp' },
 ];
 
 const whyUsFeatures = [
@@ -259,6 +259,7 @@ const localBusinessSchema = {
             title={service.title}
             description={service.description}
             href={service.href}
+            image={service.image}
           />
         ))}
       </div>
@@ -310,6 +311,7 @@ const localBusinessSchema = {
             title={event.title}
             description={event.description}
             href={event.href}
+            image={event.image}
           />
         ))}
       </div>

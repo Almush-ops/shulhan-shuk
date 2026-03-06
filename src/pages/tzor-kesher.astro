@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import HeroCardForm from '../components/HeroCardForm.astro';
 ---
 
@@ -12,13 +11,12 @@ import HeroCardForm from '../components/HeroCardForm.astro';
     title="צרו קשר"
     subtitle="השאירו פרטים ונחזור אליכם תוך שעה — או פנו אלינו ישירות"
     formTitle="השאירו פרטים"
+    backgroundImage="/images/hero/hero-05.webp"
     trustItems={['מענה תוך שעה', 'ייעוץ ללא התחייבות', 'פריסה ארצית', 'כשר למהדרין']}
   />
 
   <section class="py-12 md:py-16">
     <div class="max-w-4xl mx-auto px-4">
-      <Breadcrumbs items={[{ label: 'צור קשר' }]} />
-
       <div class="grid md:grid-cols-2 gap-8 mt-8">
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-border/50">
           <h3 class="font-bold text-dark mb-4 text-lg">פרטי קשר</h3>

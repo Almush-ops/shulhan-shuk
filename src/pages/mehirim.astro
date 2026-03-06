@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroCardForm from '../components/HeroCardForm.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import PricingTable from '../components/PricingTable.astro';
 import FAQ from '../components/FAQ.astro';
 import CTASection from '../components/CTASection.astro';
@@ -28,14 +27,9 @@ const pricingFaq = [
   <HeroCardForm
     title="כמה עולה שולחן שוק?"
     subtitle="80-95 ₪ לאורח — מחירים שקופים, בלי הפתעות, הכול כלול"
+    backgroundImage="/images/hero/hero-02.webp"
     formTitle="קבלו הצעת מחיר מדויקת"
   />
-
-  <section class="py-8">
-    <div class="max-w-4xl mx-auto px-4">
-      <Breadcrumbs items={[{ label: 'מחירון' }]} />
-    </div>
-  </section>
 
   <PricingTable />
 
