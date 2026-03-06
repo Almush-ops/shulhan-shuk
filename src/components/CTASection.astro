@@ -5,6 +5,7 @@ interface Props {
   primaryText?: string;
   primaryHref?: string;
   phone?: string;
+  backgroundImage?: string;
 }
 
 const {
@@ -13,11 +14,20 @@ const {
   primaryText = 'קבלו הצעת מחיר',
   primaryHref = '#hero-contact-form',
   phone,
+  backgroundImage = '/images/hero/hero-03.webp',
 } = Astro.props;
 ---
 
 <section class="relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-l from-brand-800 via-brand-700 to-brand-600"></div>
+  {backgroundImage && (
+    <img
+      src={backgroundImage}
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+  )}
+  <div class="absolute inset-0 bg-brand-900/75"></div>
   <div class="relative z-10 max-w-4xl mx-auto px-4 py-16 md:py-20 text-center text-white">
     <h2 class="text-2xl md:text-3xl font-heading mb-3">{title}</h2>
     <p class="text-brand-100 text-lg mb-8">{subtitle}</p>
