@@ -35,9 +35,7 @@ const { entry, type } = Astro.props;
 const { Content } = await entry.render();
 const data = entry.data;
 
-const typeLabels = { service: 'שירותים', event: 'אירועים', area: 'אזורי שירות' };
 const breadcrumbItems = [
-  { label: typeLabels[type] },
   { label: data.title },
 ];
 
