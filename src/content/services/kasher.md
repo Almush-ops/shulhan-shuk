@@ -107,7 +107,14 @@ order: 7
 
 ### שאלות שמקבלים הרבה
 
-**"אפשר לראות את תעודת הכשרות?"** — כן, תמיד. תעודת הכשרות זמינה להצגה בכל אירוע, ואפשר לקבל העתק מראש.
+**"אפשר לראות את תעודת הכשרות?"** — כן, תמיד. הנה התעודה שלנו:
+
+<div style="max-width: 320px; margin: 1.5rem auto; padding: 1rem; background: #f9fafb; border-radius: 1rem; border: 1px solid #e5e7eb; text-align: center;">
+  <img src="/images/kashrut/kashrut-certificate.webp" alt="תעודת כשרות מהדרין — שולחן שוק" style="border-radius: 0.5rem; width: 100%;" width="400" height="560" loading="lazy" />
+  <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.75rem;">תעודת כשרות מהדרין בתוקף</p>
+</div>
+
+תעודת הכשרות זמינה להצגה בכל אירוע, ואפשר לקבל העתק מראש.
 
 **"מה אם יש אורחים שלא שומרים כשרות?"** — אין בעיה. אוכל כשר למהדרין טעים לכולם. האורחים שלא שומרים כשרות ייהנו בדיוק כמו אלה ששומרים.
 
