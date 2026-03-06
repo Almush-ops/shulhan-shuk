@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Open Sans', 'Arial', 'sans-serif'],
-        heading: ['Suez One', 'David', 'serif'],
+        heading: ['Open Sans', 'Arial', 'sans-serif'],
       },
       colors: {
         brand: {
