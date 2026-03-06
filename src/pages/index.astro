@@ -11,16 +11,17 @@ import FAQ from '../components/FAQ.astro';
 import CTASection from '../components/CTASection.astro';
 import TrustBarLogos from '../components/TrustBarLogos.astro';
 import SchemaOrg from '../components/SchemaOrg.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
 
 const serviceTypes = [
-  { title: 'שולחן שוק בשרי', description: 'שולחן שוק בשרי עשיר עם בשרים טריים, סלטים, תוספות ולחמים חמים. כשר למהדרין.', href: '/basari/' },
-  { title: 'שולחן שוק חלבי', description: 'שולחן שוק חלבי עם מגוון גבינות, מאפים טריים, סלטים צבעוניים ופירות עונה.', href: '/halavi/' },
-  { title: 'שולחן שוק המבורגר', description: 'עמדת המבורגר עם בשר טחון טרי, לחמניות, תוספות ורטבים. חוויה אמריקאית בסגנון שוק.', href: '/hamburger/' },
-  { title: 'שולחן שוק שניצל', description: 'שניצלים טריים בפריכות מושלמת, עם סלטים, רטבים, פיתות ותוספות. הילדים יאהבו!', href: '/schnitzel/' },
-  { title: 'שולחן שוק קינוחים', description: 'שולחן קינוחים מפנק עם עוגות, מאפים, שוקולד, פירות ומתוקים מכל הלב.', href: '/kinuchim/' },
-  { title: 'שולחן שוק מטוגנים', description: 'עמדת מטוגנים חמים — פלאפל, צ\'יפס, חביתיות, קציצות ועוד. ריח של שוק אמיתי.', href: '/metugganim/' },
-  { title: 'שולחן שוק כשר למהדרין', description: 'כל השולחנות שלנו כשרים למהדרין תחת השגחה צמודה. עם תעודת כשרות.', href: '/kasher/' },
-  { title: 'שולחן שוק צמחוני', description: 'שולחן שוק צמחוני וטבעוני עם מגוון ירקות טריים, חומוס, סלטים ומנות ללא בשר.', href: '/tzimhoni/' },
+  { title: 'שולחן שוק בשרי', description: 'שולחן שוק בשרי עם שניצל, המבורגר, 9 סוגי מטוגנים, סלטים טריים וקינוחי בוטיק. אפשר להוסיף פרגיות, קבב, אסאדו מפורק, גלגלי שווארמה ועוד.', href: '/basari/' },
+  { title: 'שולחן שוק חלבי', description: 'שולחן שוק חלבי עם גבינות מובחרות, מאפים טריים מהתנור, סלטים צבעוניים, פירות עונתיים, מריחות ודיפים. מושלם לברנצ\'ים ואירועים אלגנטיים.', href: '/halavi/' },
+  { title: 'שולחן שוק המבורגר', description: 'לחמניות עם המבורגר טרי לצד צ\'יפס, צ\'יפס בטטה, טבעות בצל, סלטים, חומוס וטחינה. חגיגת המבורגר בסגנון שוק.', href: '/hamburger/' },
+  { title: 'שולחן שוק שניצל', description: 'לחמניות עם שניצל פריך, צ\'יפס, כדורי פירה, סלטים טריים, חומוס וטחינה. המנה שכולם אוהבים — בסגנון שוק מפנק.', href: '/schnitzel/' },
+  { title: 'שולחן שוק קינוחים', description: 'אקלרים, פבלובות, פחזניות, קינוחי כוסות, קרמבו פירות יער, קרמבו בננה, קינוחי מוס ומגש פירות העונה — חגיגה מתוקה.', href: '/kinuchim/' },
+  { title: 'שולחן שוק מטוגנים', description: 'צ\'יפס, צ\'יפס בטטה, טבעות בצל, סיגרים בשר, פסטלים, נקניקיות נשנוש, כדורי פירה, פלאפל וקובה — 9 סוגי מטוגנים חמים.', href: '/metugganim/' },
+  { title: 'שולחן שוק כשר למהדרין', description: 'כל השולחנות שלנו כשרים למהדרין בהשגחה צמודה. תעודת כשרות מהדרין, חומרי גלם מהודרים והפרדה מלאה בין בשרי לחלבי.', href: '/kasher/' },
+  { title: 'שולחן שוק צמחוני', description: 'חומוס, טחינה, פלאפל, סלטים טריים, ירקות, מטבוחה, כרוב סגול, פירות העונה וקינוחי בוטיק — שולחן שוק עשיר ללא בשר.', href: '/tzimhoni/' },
 ];
 
 const eventTypes = [
@@ -34,12 +35,12 @@ const eventTypes = [
 ];
 
 const whyUsFeatures = [
-  { icon: 'clock', title: 'מענה תוך שעה', desc: 'פונים אלינו ומקבלים הצעת מחיר תוך שעה — ללא התחייבות.' },
-  { icon: 'truck', title: 'פריסה ארצית', desc: 'משרתים בכל הארץ — מקריית שמונה ועד אילת, בכל יום בשבוע.' },
-  { icon: 'certificate', title: 'כשר למהדרין', desc: 'כל השולחנות בהשגחת כשרות צמודה עם תעודת כשרות.' },
-  { icon: 'wallet', title: 'מחירים שקופים', desc: 'מחירון ברור וידוע מראש — בלי הפתעות ובלי עלויות נסתרות.' },
-  { icon: 'star', title: 'חומרי גלם טריים', desc: 'עובדים רק עם חומרי גלם טריים ואיכותיים. ההכנה ביום האירוע.' },
-  { icon: 'users', title: 'שירות מקצה לקצה', desc: 'הגעה, סידור, הגשה ופינוי — אתם רק נהנים עם האורחים.' },
+  { icon: 'clock', title: 'מענה תוך שעה', desc: 'משאירים פרטים ומקבלים הצעת מחיר מפורטת תוך שעה — ללא התחייבות ובלי לחץ.' },
+  { icon: 'truck', title: 'פריסה ארצית', desc: 'מגיעים לכל מקום בארץ — מקריית שמונה ועד אילת, כולל ערים, ישובים ואזורי תעשייה.' },
+  { icon: 'certificate', title: 'כשר למהדרין', desc: 'תעודת כשרות מהדרין, השגחה צמודה, חומרי גלם מהודרים והפרדה מלאה בין בשרי לחלבי.' },
+  { icon: 'wallet', title: 'מחירים שקופים', desc: '80-95 ₪ לאורח, תלוי בכמות — כולל הכנה, הגעה, סידור, הגשה ופינוי. בלי הפתעות.' },
+  { icon: 'star', title: 'הכנה טרייה ביום האירוע', desc: 'לא משתמשים בחומרי גלם מוכנים מראש. הכול מוכן טרי ביום האירוע מחומרי גלם איכותיים.' },
+  { icon: 'users', title: 'שירות מקצה לקצה', desc: 'ייעוץ אישי, בניית תפריט, הכנה, הגעה, סידור ועיצוב, הגשה ופינוי — אתם רק נהנים.' },
 ];
 
 const testimonials = [
@@ -50,16 +51,17 @@ const testimonials = [
 ];
 
 const faqItems = [
-  { question: 'מה זה שולחן שוק?', answer: 'שולחן שוק הוא קונספט קייטרינג שבו האוכל מוגש על שולחן ארוך בסגנון שוק — עשיר, צבעוני ומגוון. השולחן כולל מגוון מנות, סלטים, לחמים ותוספות. זו חוויה ויזואלית וקולינרית שמתאימה לכל סוג אירוע.' },
-  { question: 'כמה עולה שולחן שוק?', answer: 'המחיר נע בין 80 ל-95 ₪ לאורח, תלוי בכמות הסועדים. עבור 20 סועדים — 95 ₪, 30 סועדים — 90 ₪, 40 סועדים — 85 ₪, 50 סועדים — 80 ₪. <a href="/mehirim/" class="text-brand-600 hover:underline">למחירון המלא לחצו כאן</a>.' },
-  { question: 'לאילו אירועים מתאים שולחן שוק?', answer: 'שולחן שוק מתאים לכל אירוע: ימי הולדת, בר/בת מצווה, חתונות, מסיבות רווקות, חינות, אירועי חברה, שבתות וחגים. אנחנו מתאימים את התפריט והעיצוב לאירוע שלכם.' },
-  { question: 'מה המינימום להזמנה?', answer: 'המינימום הוא 15 אורחים לרוב סוגי השולחנות. לשולחנות המבורגר ושניצל המינימום הוא 20 אורחים.' },
-  { question: 'האם אתם עובדים בכל הארץ?', answer: 'כן! אנחנו מספקים שירות שולחן שוק בכל רחבי ישראל — מקריית שמונה ועד אילת. המשלוח כלול במחיר (באזורים מסוימים עשוי להיות חיוב נוסף).' },
-  { question: 'האם השולחנות כשרים?', answer: 'כן, כל השולחנות שלנו כשרים למהדרין תחת השגחת כשרות צמודה. <a href="/kashrut/" class="text-brand-600 hover:underline">לתעודת הכשרות לחצו כאן</a>.' },
-  { question: 'כמה זמן לפני האירוע צריך להזמין?', answer: 'מומלץ להזמין לפחות שבוע מראש, אבל לעתים יש לנו זמינות גם בהתראה קצרה יותר. צרו קשר ונבדוק.' },
-  { question: 'מה כלול בשירות?', answer: 'השירות כולל: ייעוץ ובניית תפריט, הכנה טרייה ביום האירוע, הגעה למקום, סידור ועיצוב השולחן, הגשה ופינוי. אתם רק צריכים לספק שולחן ומקום.' },
-  { question: 'האם אפשר להתאים תפריט אישי?', answer: 'בהחלט! אנחנו מתאימים את התפריט לפי הצרכים שלכם — אלרגיות, העדפות, תקציב וסוג האירוע. הכול גמיש.' },
-  { question: 'איך מזמינים?', answer: 'פשוט משאירים פרטים בטופס, שולחים הודעת וואטסאפ או מתקשרים. נחזור אליכם תוך שעה עם הצעת מחיר מפורטת.' },
+  { question: 'מה זה שולחן שוק?', answer: 'שולחן שוק הוא קונספט קייטרינג שבו האוכל מוגש על שולחן ארוך ומעוצב בסגנון שוק אוכל — עשיר, צבעוני ושופע. השולחן כולל ירקות וסלטים (חומוס, טחינה, סלטים טריים), מנות עיקריות (שניצל, המבורגר), מגוון מטוגנים (צ\'יפס, פלאפל, קובה ועוד), ופירות וקינוחי בוטיק. זו חוויה ויזואלית וקולינרית שמתאימה לכל סוג אירוע — מיום הולדת ועד חתונה.' },
+  { question: 'כמה עולה שולחן שוק?', answer: 'המחיר נע בין 80 ל-95 ₪ לאורח, לפי כמות הסועדים: 20 סועדים — 95 ₪, 30 סועדים — 90 ₪, 40 סועדים — 85 ₪ (הכי פופולרי), 50 סועדים — 80 ₪. המחיר כולל הכנה טרייה, הגעה למקום, סידור ועיצוב השולחן, הגשה ופינוי. <a href="/mehirim/" class="text-brand-600 hover:underline">למחירון המלא לחצו כאן</a>.' },
+  { question: 'מה כלול בשולחן שוק?', answer: 'החבילה הסטנדרטית כוללת: ירקות וסלטים (חומוס, טחינה, כרוב סגול, מטבוחה, פלטת ירקות, סלט ישראלי, סלט כרוב, סלט עלי בייבי), מטוגנים (צ\'יפס, צ\'יפס בטטה, טבעות בצל, סיגרים בשר, פסטלים, נקניקיות, כדורי פירה, פלאפל, קובה), עיקריות (לחמניות שניצל + לחמניות המבורגר), ופירות וקינוחי בוטיק (אקלרים, פבלובות, פחזניות, קרמבו ועוד). אפשר להוסיף תוספות כמו פילה סלומון, עראייס, קבב, פרגיות, אסאדו ושווארמה.' },
+  { question: 'לאילו אירועים מתאים שולחן שוק?', answer: 'שולחן שוק מתאים לכל סוג אירוע: <a href="/yom-huledet/" class="text-brand-600 hover:underline">ימי הולדת</a>, <a href="/bar-mitzva/" class="text-brand-600 hover:underline">בר/בת מצווה</a>, <a href="/hatuna/" class="text-brand-600 hover:underline">חתונות</a>, <a href="/mesibat-ravakot/" class="text-brand-600 hover:underline">מסיבות רווקות</a>, <a href="/hina/" class="text-brand-600 hover:underline">חינות</a>, <a href="/eruey-hevra/" class="text-brand-600 hover:underline">אירועי חברה</a> ו<a href="/shabat/" class="text-brand-600 hover:underline">ארוחות שבת</a>. אנחנו מתאימים את סוג השולחן, התפריט והעיצוב לאירוע שלכם.' },
+  { question: 'מה המינימום להזמנה?', answer: 'המינימום הוא 20 אורחים. לאירועים קטנים יותר ניתן ליצור קשר ולבדוק אפשרויות מותאמות.' },
+  { question: 'האם אתם מגיעים לכל הארץ?', answer: 'כן! אנחנו מגיעים לכל מקום בישראל — <a href="/tel-aviv/" class="text-brand-600 hover:underline">תל אביב</a>, <a href="/haifa/" class="text-brand-600 hover:underline">חיפה</a>, <a href="/yerushalayim/" class="text-brand-600 hover:underline">ירושלים</a>, <a href="/beer-sheva/" class="text-brand-600 hover:underline">באר שבע</a> ולכל ישוב בארץ. ההגעה, הסידור וההגשה כלולים במחיר.' },
+  { question: 'האם השולחנות כשרים?', answer: 'כל השולחנות שלנו כשרים למהדרין. אנחנו עובדים עם תעודת כשרות מהדרין, השגחה צמודה, חומרי גלם מהודרים בלבד והפרדה מלאה בין בשרי לחלבי. <a href="/kasher/" class="text-brand-600 hover:underline">לפרטים נוספים על הכשרות</a>.' },
+  { question: 'כמה זמן לפני האירוע צריך להזמין?', answer: 'מומלץ להזמין לפחות שבוע מראש, במיוחד בעונות חגים ואירועים (פורים, פסח, קיץ). בזמינות — אפשר גם בהתראה קצרה יותר. השאירו פרטים ונחזור אליכם תוך שעה.' },
+  { question: 'מה ההבדל בין סוגי השולחנות?', answer: 'החבילה הבסיסית כוללת שניצל, המבורגר, מטוגנים, סלטים, פירות וקינוחי בוטיק. ההבדל בין הסוגים הוא בדגש: <a href="/basari/" class="text-brand-600 hover:underline">שולחן בשרי</a> מדגיש בשרים עם תוספות כמו שווארמה וקבב, <a href="/halavi/" class="text-brand-600 hover:underline">שולחן חלבי</a> מציע גבינות ומאפים, <a href="/hamburger/" class="text-brand-600 hover:underline">שולחן המבורגר</a> מתמקד בהמבורגרים, וכן הלאה. אפשר גם לשלב כמה סוגים.' },
+  { question: 'האם אפשר להתאים את התפריט?', answer: 'בהחלט! אנחנו מתאימים את התפריט לפי הצרכים שלכם — אלרגיות, העדפות אישיות, תקציב, סוג האירוע וכמות האורחים. אפשר להוסיף או להחליף מנות, לשלב סוגי שולחנות ולהתאים את העיצוב.' },
+  { question: 'איך מזמינים שולחן שוק?', answer: 'משאירים פרטים בטופס באתר, שולחים הודעת וואטסאפ או מתקשרים ל-055-432-7900. שרית חוזרת אליכם תוך שעה עם הצעת מחיר מפורטת — ללא התחייבות.' },
 ];
 
 const galleryImages = [
@@ -109,10 +111,13 @@ const localBusinessSchema = {
         <div class="order-2 lg:order-1">
           <h2 class="text-2xl md:text-3xl font-heading text-dark mb-6">מה זה שולחן שוק?</h2>
           <p class="text-muted leading-relaxed mb-4">
-            שולחן שוק הוא חגיגה של אוכל — שולחן ארוך ומרשים עמוס במגוון מנות, סלטים, לחמים טריים ותוספות צבעוניות, מוגש בסגנון שוק אוכל אותנטי. זו דרך מושלמת לארח אורחים בכל סוג אירוע.
+            שולחן שוק הוא קונספט קייטרינג ישראלי שבו האוכל מוגש על שולחן ארוך ומעוצב בסגנון שוק אוכל — עשיר, צבעוני ושופע. במקום מנות מוגשות בצלחות, האורחים ניגשים לשולחן, בוחרים ממגוון המנות, טועמים ומגלים טעמים חדשים. זו חוויה קולינרית שמתאימה לכל סוג אירוע ולכל גיל.
+          </p>
+          <p class="text-muted leading-relaxed mb-4">
+            ב<strong class="text-dark">שולחן שוק</strong> אנחנו מתמחים בהכנה והגשה של שולחנות שוק לאירועים פרטיים ועסקיים בכל רחבי הארץ. כל שולחן שוק שלנו מוכן טרי ביום האירוע מחומרי גלם איכותיים ומוגש בעיצוב מקצועי. התפריט שלנו כולל ירקות וסלטים, מנות עיקריות, מגוון רחב של מטוגנים, ופירות וקינוחי בוטיק — הכול <a href="/kasher/" class="text-brand-600 hover:underline">כשר למהדרין</a> בהשגחה צמודה.
           </p>
           <p class="text-muted leading-relaxed mb-6">
-            ב<strong class="text-dark">שולחן שוק</strong> אנחנו מתמחים בהכנה והגשה של שולחנות שוק לכל סוג אירוע — ימי הולדת, בר מצווה, חתונות, מסיבות רווקות ואירועי חברה. כל שולחן מוכן טרי ביום האירוע מחומרי גלם איכותיים, ומוגש עם עיצוב מקצועי שמשאיר רושם.
+            שרית, הבעלים של שולחן שוק, מלווה כל אירוע באופן אישי — מהייעוץ הראשוני, דרך בניית התפריט, ועד ההגשה במקום. המחיר מתחיל מ-<a href="/mehirim/" class="text-brand-600 hover:underline">80 ₪ לאורח</a> וכולל הכנה, הגעה, סידור, הגשה ופינוי.
           </p>
           <div class="flex flex-wrap gap-3">
             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-fresh-500/10 text-fresh-600 rounded-full text-sm font-medium">
@@ -125,7 +130,7 @@ const localBusinessSchema = {
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
               </svg>
-              חומרי גלם טריים
+              הכנה טרייה ביום האירוע
             </span>
             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-fresh-500/10 text-fresh-600 rounded-full text-sm font-medium">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -133,13 +138,19 @@ const localBusinessSchema = {
               </svg>
               שירות מקצה לקצה
             </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-fresh-500/10 text-fresh-600 rounded-full text-sm font-medium">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              פריסה ארצית
+            </span>
           </div>
         </div>
         <div class="order-1 lg:order-2">
           <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
             <img
               src="/images/hero/hero-04.webp"
-              alt="שולחן שוק ארוך עמוס במגוון מנות"
+              alt="שולחן שוק ארוך עמוס במנות בשריות, סלטים, מטוגנים ולחמים"
               class="w-full h-full object-cover"
               width="800"
               height="600"
@@ -148,6 +159,90 @@ const localBusinessSchema = {
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 3.5 מה כולל שולחן שוק — תפריט אמיתי -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-heading text-dark mb-3 text-center">מה כולל שולחן שוק שלנו?</h2>
+      <p class="text-muted text-center mb-10 max-w-2xl mx-auto">התפריט המלא — הכול כלול במחיר, מוכן טרי ביום האירוע</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- ירקות וסלטים -->
+        <div class="bg-surface p-6 rounded-2xl border border-border/50">
+          <div class="w-10 h-10 rounded-xl bg-fresh-500/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-fresh-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" /></svg>
+          </div>
+          <h3 class="font-bold text-dark mb-3">ירקות וסלטים</h3>
+          <ul class="space-y-1.5 text-sm text-muted">
+            <li>חומוס</li>
+            <li>טחינה</li>
+            <li>כרוב סגול</li>
+            <li>מטבוחה</li>
+            <li>פלטת ירקות טריים</li>
+            <li>סלט ירקות ישראלי קצוץ</li>
+            <li>סלט כרוב לבן וגרעינים קלויים</li>
+            <li>סלט עלי בייבי</li>
+          </ul>
+        </div>
+        <!-- מטוגנים -->
+        <div class="bg-surface p-6 rounded-2xl border border-border/50">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /></svg>
+          </div>
+          <h3 class="font-bold text-dark mb-3">מטוגנים (9 סוגים)</h3>
+          <ul class="space-y-1.5 text-sm text-muted">
+            <li>צ'יפס</li>
+            <li>צ'יפס בטטה</li>
+            <li>טבעות בצל</li>
+            <li>סיגרים בשר</li>
+            <li>פסטלים תפוח אדמה</li>
+            <li>נקניקיות נשנוש</li>
+            <li>כדורי פירה</li>
+            <li>פלאפל</li>
+            <li>קובה</li>
+          </ul>
+        </div>
+        <!-- עיקריות -->
+        <div class="bg-surface p-6 rounded-2xl border border-border/50">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+          </div>
+          <h3 class="font-bold text-dark mb-3">עיקריות</h3>
+          <ul class="space-y-1.5 text-sm text-muted">
+            <li><strong>לחמניות עם שניצל</strong></li>
+            <li><strong>לחמניות עם המבורגר</strong></li>
+          </ul>
+          <p class="text-xs text-muted mt-3 pt-3 border-t border-border/50">אפשר להוסיף (בתשלום נוסף):</p>
+          <ul class="space-y-1.5 text-sm text-muted mt-2">
+            <li>פילה סלומון שלם אפוי</li>
+            <li>עראייס</li>
+            <li>קבב</li>
+            <li>פרגיות</li>
+            <li>אסאדו מפורק</li>
+            <li>גלגלי שווארמה</li>
+            <li>אורז / פסטה</li>
+          </ul>
+        </div>
+        <!-- פירות וקינוחים -->
+        <div class="bg-surface p-6 rounded-2xl border border-border/50">
+          <div class="w-10 h-10 rounded-xl bg-fresh-500/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-fresh-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+          </div>
+          <h3 class="font-bold text-dark mb-3">פירות וקינוחי בוטיק</h3>
+          <ul class="space-y-1.5 text-sm text-muted">
+            <li>פירות העונה — אבטיח, מלון, אננס, ענבים, תותים, קיווי, פסיפלורה</li>
+            <li>אקלרים</li>
+            <li>פבלובות</li>
+            <li>פחזניות</li>
+            <li>קינוחי כוסות</li>
+            <li>קרמבו פירות יער</li>
+            <li>קרמבו בננה</li>
+            <li>קינוחי מוס</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center text-muted mt-8">התפריט ניתן להתאמה אישית לפי סוג האירוע, העדפות הקהל ודרישות מיוחדות. <a href="/mehirim/" class="text-brand-600 hover:underline">ראו מחירון מלא</a></p>
     </div>
   </section>
 
@@ -190,6 +285,9 @@ const localBusinessSchema = {
       </div>
     </div>
   </section>
+
+  <!-- 5.5 תהליך עבודה -->
+  <ProcessSteps />
 
   <!-- 6. טבלת מחירים -->
   <PricingTable />
