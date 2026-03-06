@@ -11,6 +11,7 @@ interface Props {
   ogType?: string;
   canonicalUrl?: string;
   noindex?: boolean;
+  preloadImage?: string;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   ogType,
   canonicalUrl,
   noindex = false,
+  preloadImage,
 } = Astro.props;
 ---
 
@@ -33,6 +35,7 @@ const {
       ogType={ogType}
       canonicalUrl={canonicalUrl}
       noindex={noindex}
+      preloadImage={preloadImage}
     />
   </head>
   <body class="min-h-screen flex flex-col bg-white text-dark antialiased font-sans">

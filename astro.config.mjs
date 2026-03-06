@@ -7,7 +7,9 @@ export default defineConfig({
   site: 'https://shulhan-shuk.co.il',
   integrations: [
     tailwind(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/privacy/') && !page.includes('/terms/') && !page.includes('/accessibility/'),
+    }),
   ],
   image: {
     // Enable image optimization with sharp

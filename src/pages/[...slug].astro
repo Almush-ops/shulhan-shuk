@@ -6,6 +6,7 @@ import FAQ from '../components/FAQ.astro';
 import CTASection from '../components/CTASection.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import SchemaOrg from '../components/SchemaOrg.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -34,30 +35,58 @@ const { entry, type } = Astro.props;
 const { Content } = await entry.render();
 const data = entry.data;
 
+const typeLabels = { service: 'שירותים', event: 'אירועים', area: 'אזורי שירות' };
+const breadcrumbItems = [
+  { label: typeLabels[type] },
+  { label: data.title },
+];
+
 // Schema per type
 const pageSchema = type === 'service' ? {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: data.title,
   description: data.description,
+  image: (data as any).image ? `https://shulhan-shuk.co.il${(data as any).image}` : undefined,
   ...(data.priceRange ? {
     offers: {
       '@type': 'AggregateOffer',
       priceCurrency: 'ILS',
+      lowPrice: 80,
+      highPrice: 95,
+      offerCount: 4,
       availability: 'https://schema.org/InStock',
     },
   } : {}),
 } : type === 'area' ? {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'שולחן שוק',
+  name: `שולחן שוק ${(data as any).city || ''}`.trim(),
   description: data.description,
+  telephone: '055-432-7900',
+  url: `https://shulhan-shuk.co.il/${entry.slug}/`,
+  priceRange: '₪₪',
+  image: 'https://shulhan-shuk.co.il/images/social.jpg',
   areaServed: { '@type': 'City', name: (data as any).city },
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'IL',
+    addressRegion: (data as any).city,
+  },
 } : {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: data.title,
   description: data.description,
+  image: (data as any).image ? `https://shulhan-shuk.co.il${(data as any).image}` : undefined,
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'ILS',
+    lowPrice: 80,
+    highPrice: 95,
+    offerCount: 4,
+    availability: 'https://schema.org/InStock',
+  },
 };
 ---
 
@@ -76,6 +105,9 @@ const pageSchema = type === 'service' ? {
   <!-- Content area -->
   <section class="py-12 md:py-16">
     <div class="max-w-4xl mx-auto px-4">
+      <!-- Breadcrumbs -->
+      <Breadcrumbs items={breadcrumbItems} />
+
       <!-- Main content from markdown -->
       <div class="prose max-w-none">
         <Content />

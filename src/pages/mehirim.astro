@@ -4,6 +4,24 @@ import HeroCardForm from '../components/HeroCardForm.astro';
 import PricingTable from '../components/PricingTable.astro';
 import FAQ from '../components/FAQ.astro';
 import CTASection from '../components/CTASection.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const pricingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'שולחן שוק — קייטרינג כשר למהדרין',
+  description: 'שולחן שוק לכל אירוע — בשרי, חלבי, המבורגר, שניצל, צמחוני. כולל שניצל, המבורגר, 9 מטוגנים, 8 סלטים, פירות וקינוחי בוטיק. הכנה, הגעה, סידור, הגשה ופינוי.',
+  image: 'https://shulhan-shuk.co.il/images/social.jpg',
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'ILS',
+    lowPrice: 80,
+    highPrice: 95,
+    offerCount: 4,
+    availability: 'https://schema.org/InStock',
+  },
+};
 
 const pricingFaq = [
   { question: 'כמה עולה שולחן שוק?', answer: 'שולחן שוק עולה 80-95 ₪ לאורח, לפי כמות הסועדים: 20 סועדים — 95 ₪, 30 סועדים — 90 ₪, 40 סועדים — 85 ₪, 50 סועדים — 80 ₪. המחיר אחיד לכל סוגי השולחנות (בשרי, חלבי, המבורגר, שניצל, צמחוני). כולל הכנה, הגעה, סידור, הגשה ופינוי.' },
@@ -30,6 +48,10 @@ const pricingFaq = [
     backgroundImage="/images/hero/hero-02.webp"
     formTitle="קבלו הצעת מחיר מדויקת"
   />
+
+  <div class="max-w-4xl mx-auto px-4 pt-8">
+    <Breadcrumbs items={[{ label: 'מחירון' }]} />
+  </div>
 
   <PricingTable />
 
@@ -163,4 +185,6 @@ const pricingFaq = [
     subtitle="השאירו פרטים וקבלו הצעה מותאמת אישית תוך שעה"
     phone="055-432-7900"
   />
+
+  <SchemaOrg schema={pricingSchema} />
 </BaseLayout>

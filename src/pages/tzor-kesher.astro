@@ -1,6 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroCardForm from '../components/HeroCardForm.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'שולחן שוק',
+  description: 'קייטרינג שולחנות שוק כשר למהדרין לכל אירוע — בשרי, חלבי, המבורגר, שניצל ועוד. פריסה ארצית.',
+  telephone: '055-432-7900',
+  email: 'info@shulhan-shuk.co.il',
+  url: 'https://shulhan-shuk.co.il',
+  priceRange: '₪₪',
+  image: 'https://shulhan-shuk.co.il/images/social.jpg',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'IL',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'ישראל',
+  },
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'], opens: '08:00', closes: '20:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday', opens: '08:00', closes: '14:00' },
+  ],
+};
 ---
 
 <BaseLayout
@@ -17,6 +43,7 @@ import HeroCardForm from '../components/HeroCardForm.astro';
 
   <section class="py-12 md:py-16">
     <div class="max-w-4xl mx-auto px-4">
+      <Breadcrumbs items={[{ label: 'צור קשר' }]} />
       <div class="grid md:grid-cols-2 gap-8 mt-8">
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-border/50">
           <h3 class="font-bold text-dark mb-4 text-lg">פרטי קשר</h3>
@@ -42,4 +69,6 @@ import HeroCardForm from '../components/HeroCardForm.astro';
       </div>
     </div>
   </section>
+
+  <SchemaOrg schema={contactSchema} />
 </BaseLayout>

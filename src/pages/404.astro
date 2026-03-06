@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="404 — העמוד לא נמצא"
+  description="העמוד שחיפשת לא נמצא. חזרו לדף הבית או בחרו מהקישורים למטה."
+  noindex={true}
+>
+  <section class="py-20 md:py-32 text-center">
+    <div class="max-w-2xl mx-auto px-4">
+      <p class="text-7xl md:text-9xl font-bold text-brand-200 mb-6">404</p>
+      <h1 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-4">העמוד לא נמצא</h1>
+      <p class="text-muted mb-10 text-lg">העמוד שחיפשת לא קיים, אולי הכתובת שגויה או שהעמוד הוסר.</p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+        <a href="/" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-600 text-white font-semibold rounded-lg hover:bg-brand-700 transition-colors">
+          לדף הבית
+        </a>
+        <a href="/mehirim/" class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-brand-300 text-brand-700 font-semibold rounded-lg hover:bg-brand-50 transition-colors">
+          מחירון
+        </a>
+        <a href="/tzor-kesher/" class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-brand-300 text-brand-700 font-semibold rounded-lg hover:bg-brand-50 transition-colors">
+          צור קשר
+        </a>
+      </div>
+
+      <div class="text-start max-w-md mx-auto">
+        <h2 class="text-lg font-bold text-dark mb-4">אולי חיפשתם:</h2>
+        <ul class="space-y-2 text-muted">
+          <li><a href="/basari/" class="text-brand-600 hover:underline">שולחן שוק בשרי</a></li>
+          <li><a href="/hamburger/" class="text-brand-600 hover:underline">שולחן שוק המבורגר</a></li>
+          <li><a href="/yom-huledet/" class="text-brand-600 hover:underline">שולחן שוק ליום הולדת</a></li>
+          <li><a href="/mehirim/" class="text-brand-600 hover:underline">מחירון שולחן שוק</a></li>
+          <li><a href="/galeria/" class="text-brand-600 hover:underline">גלריית אירועים</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
