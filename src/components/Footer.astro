@@ -2,6 +2,7 @@
 const currentYear = new Date().getFullYear();
 const phone = '055-432-7900';
 const whatsapp = '9725543279000';
+const email = 'info@shulhan-shuk.co.il';
 ---
 
 <footer class="bg-dark text-brand-200">
@@ -21,6 +22,10 @@ const whatsapp = '9725543279000';
             {phone}
           </a>
         )}
+        <br />
+        <a href={`mailto:${email}`} class="text-sm text-brand-300 hover:text-white transition-colors" dir="ltr">
+          {email}
+        </a>
       </div>
 
       <!-- שולחנות -->
