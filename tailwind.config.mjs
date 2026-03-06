@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Rubik', 'Arial', 'sans-serif'],
+        sans: ['Open Sans', 'Arial', 'sans-serif'],
         heading: ['Suez One', 'David', 'serif'],
       },
       colors: {
