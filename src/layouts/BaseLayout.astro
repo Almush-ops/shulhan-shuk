@@ -243,9 +243,25 @@ const {
         cookieBanner.classList.remove('hidden');
       }
 
+      function loadGA4() {
+        if (document.getElementById('ga4-script')) return;
+        const s = document.createElement('script');
+        s.id = 'ga4-script';
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-GMQY0399KL';
+        document.head.appendChild(s);
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        function gtag(...args: any[]) { (window as any).dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-GMQY0399KL');
+      }
+
+      if (consent === 'accepted') loadGA4();
+
       cookieAccept?.addEventListener('click', () => {
         localStorage.setItem('cookie-consent', 'accepted');
         cookieBanner?.classList.add('hidden');
+        loadGA4();
       });
 
       cookieDecline?.addEventListener('click', () => {
