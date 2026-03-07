@@ -33,18 +33,23 @@ const {
 ---
 
 <section class="relative overflow-hidden min-h-[600px] md:min-h-[700px] flex items-center">
-  <!-- Background image -->
-  {backgroundImage ? (
-    <img
-      src={backgroundImage}
-      alt=""
-      class="absolute inset-0 w-full h-full object-cover"
-      width="1280"
-      height="720"
-      loading="eager"
-      fetchpriority="high"
-    />
-  ) : (
+  <!-- Background image with responsive srcset -->
+  {backgroundImage ? (() => {
+    const base = backgroundImage.replace('.webp', '');
+    return (
+      <img
+        src={backgroundImage}
+        srcset={`${base}-640w.webp 640w, ${base}-960w.webp 960w, ${backgroundImage} 1280w`}
+        sizes="100vw"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover"
+        width="1280"
+        height="720"
+        loading="eager"
+        fetchpriority="high"
+      />
+    );
+  })() : (
     <div class="absolute inset-0 bg-gradient-to-br from-brand-800 to-brand-900"></div>
   )}
 

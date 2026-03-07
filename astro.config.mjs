@@ -18,7 +18,7 @@ export default defineConfig({
   // Output static HTML by default (best for SEO + performance)
   output: 'static',
   build: {
-    // Inline small styles for faster LCP
-    inlineStylesheets: 'auto',
+    // Inline all styles to eliminate render-blocking CSS requests
+    inlineStylesheets: 'always',
   },
 });
