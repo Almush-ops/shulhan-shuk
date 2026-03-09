@@ -33,18 +33,18 @@ const {
 ---
 
 <section class="relative overflow-hidden min-h-[600px] md:min-h-[700px] flex items-center">
-  <!-- Background image with responsive srcset -->
+  <!-- Background image -->
   {backgroundImage ? (() => {
     const base = backgroundImage.replace('.webp', '');
     return (
       <img
         src={backgroundImage}
-        srcset={`${base}-640w.webp 640w, ${base}-960w.webp 960w, ${backgroundImage} 1280w`}
+        srcset={`${base}-640w.webp 640w, ${base}-960w.webp 960w, ${base}-1280w.webp 1280w, ${backgroundImage} 1920w`}
         sizes="100vw"
         alt=""
         class="absolute inset-0 w-full h-full object-cover"
-        width="1280"
-        height="720"
+        width="1920"
+        height="1440"
         loading="eager"
         fetchpriority="high"
       />
@@ -120,7 +120,7 @@ const {
                   placeholder={field.placeholder}
                   required={field.required}
                   dir={field.type === 'tel' ? 'ltr' : undefined}
-                  class={`w-full px-4 py-3 border border-border rounded-lg text-dark placeholder-muted/60 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-colors${field.type === 'tel' ? ' text-right' : ''}`}
+                  class="w-full px-4 py-3 border border-border rounded-lg text-dark placeholder-muted/60 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-colors"
                 />
               )}
             </div>
@@ -186,7 +186,7 @@ const {
             'center-client': 'שרית',
             'center-phone': '0542013383',
             'center-payment': '20',
-            'category': 'אוכל',
+            'category': 'בעלי מקצוע',
           }),
         });
         if (!response.ok) throw new Error('Submit failed');
