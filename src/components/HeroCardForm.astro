@@ -34,22 +34,12 @@ const {
 
 <section class="relative overflow-hidden min-h-[600px] md:min-h-[700px] flex items-center">
   <!-- Background image -->
-  {backgroundImage ? (() => {
-    const base = backgroundImage.replace('.webp', '');
-    return (
-      <img
-        src={backgroundImage}
-        srcset={`${base}-640w.webp 640w, ${base}-960w.webp 960w, ${base}-1280w.webp 1280w, ${backgroundImage} 1920w`}
-        sizes="100vw"
-        alt=""
-        class="absolute inset-0 w-full h-full object-cover"
-        width="1920"
-        height="1440"
-        loading="eager"
-        fetchpriority="high"
-      />
-    );
-  })() : (
+  {backgroundImage ? (
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style={`background-image: url('${backgroundImage}')`}
+    />
+  ) : (
     <div class="absolute inset-0 bg-gradient-to-br from-brand-800 to-brand-900"></div>
   )}
 
