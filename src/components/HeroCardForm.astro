@@ -13,6 +13,7 @@ interface Props {
   subtitle?: string;
   formTitle?: string;
   backgroundImage?: string;
+  mobileBackgroundImage?: string;
   trustItems?: string[];
   formFields?: FormField[];
   submitText?: string;
@@ -23,6 +24,7 @@ const {
   subtitle,
   formTitle = 'קבלו הצעת מחיר',
   backgroundImage,
+  mobileBackgroundImage,
   trustItems,
   formFields = [
     { name: 'name', label: 'שם מלא', type: 'text' as const, placeholder: 'הזינו שם מלא', required: true },
@@ -30,15 +32,33 @@ const {
   ],
   submitText = 'קבלו הצעת מחיר',
 } = Astro.props;
+
+// Generate unique ID for this hero section
+const heroId = `hero-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
 <section class="relative overflow-hidden min-h-[600px] md:min-h-[700px] flex items-center">
-  <!-- Background image -->
+  <!-- Background image with mobile/desktop versions -->
   {backgroundImage ? (
-    <div
-      class="absolute inset-0 bg-cover bg-[center_90%] md:bg-center bg-no-repeat"
-      style={`background-image: url('${backgroundImage}')`}
-    />
+    <>
+      <div
+        id={heroId}
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      />
+      <style define:vars={{
+        desktopBg: `url('${backgroundImage}')`,
+        mobileBg: `url('${mobileBackgroundImage || backgroundImage}')`
+      }}>
+        #{heroId} {
+          background-image: var(--mobileBg);
+        }
+        @media (min-width: 768px) {
+          #{heroId} {
+            background-image: var(--desktopBg);
+          }
+        }
+      </style>
+    </>
   ) : (
     <div class="absolute inset-0 bg-gradient-to-br from-brand-800 to-brand-900"></div>
   )}

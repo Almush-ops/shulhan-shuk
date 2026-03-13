@@ -87,10 +87,6 @@ const localBusinessSchema = {
   areaServed: { '@type': 'Country', name: 'Israel' },
   priceRange: '₪₪',
   image: 'https://shulhan-shuk.co.il/images/social.jpg',
-  sameAs: [
-    'https://www.youtube.com/@shulhan-shuk',
-    'https://share.google/XoZhOBFXbPVAKj5O2',
-  ],
   // aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: 'XX' }, // TBD
 };
 ---
@@ -98,13 +94,13 @@ const localBusinessSchema = {
 <BaseLayout
   title="שולחן שוק לכל אירוע — בשרי, חלבי, המבורגר ועוד | שולחן שוק"
   description="שולחן שוק לכל אירוע — בשרי, חלבי, המבורגר, שניצל ועוד. כשר למהדרין, פריסה ארצית, מחירים שקופים. קבלו הצעת מחיר תוך שעה!"
-  preloadImage="/images/hero/hero-01.webp"
 >
   <!-- 1. Hero + Lead Form -->
   <HeroCardForm
     title="שולחן שוק לכל אירוע"
     subtitle="בשרי, חלבי, המבורגר, שניצל ועוד — משלוח והגשה בכל הארץ. כשר למהדרין."
     backgroundImage="/images/hero/hero-01.webp"
+    mobileBackgroundImage="/images/hero/hero-01-mobile.webp"
     trustItems={['פריסה ארצית', 'כשר למהדרין', 'מחירים שקופים', 'מענה תוך שעה']}
   />
 
@@ -157,7 +153,7 @@ const localBusinessSchema = {
           <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
             <img
               src="/images/hero/hero-04.webp"
-              srcset="/images/hero/hero-04-640w.webp 640w, /images/hero/hero-04-960w.webp 960w, /images/hero/hero-04.webp 1280w"
+              srcset="/images/hero/hero-04-640w.webp 640w, /images/hero/hero-04-960w.webp 960w, /images/hero/hero-04.webp 1920w"
               sizes="(max-width: 1024px) 100vw, 50vw"
               alt="שולחן שוק ארוך עמוס במנות בשריות, סלטים, מטוגנים ולחמים"
               class="w-full h-full object-cover"
